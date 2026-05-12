@@ -2728,9 +2728,7 @@ public class Device {
     @Column(length = 32)
     private Integer checklist_template_count;
 
-    @JsonBackReference
-    @ManyToOne
-    private Docker docker;
+    // removed: relation to Bucket-D entity Docker (edge-only)
 
     //	@OneToOne(cascade = CascadeType.ALL)
     private String parent;
@@ -2848,9 +2846,7 @@ public class Device {
     @ManyToOne
     private Phonebook other_vendor_3;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "device")
-    private Snmp_Configuration snmp_configuration;
-
+    // removed: relation to Bucket-C entity Snmp_Configuration (AP-C2)
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<Interface> interfaces;
@@ -2863,56 +2859,39 @@ public class Device {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<Notes> notes;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product_Details product_details;
+    // removed: relation to Bucket-C entity Product_Details (AP-C8)
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
-    private Set<RemoteAccessSession> remote_access_session;
+    // removed: relation to Bucket-D entity RemoteAccessSession (edge-only)
 
     @ManyToOne
     private Location location;
 
-    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL)
-    private Set<History> history;
+    // removed: relation to Bucket-C entity History (AP-C6)
 
+    // removed: relation to Bucket-C entity Ticket (AP-C3)
 
-    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL)
-    private Set<Ticket> ticket;
+    // removed: relation to Bucket-C entity Lorawan_Sensor (AP-C2)
 
-    @OneToMany(mappedBy = "device")
-    private Set<Lorawan_Sensor> lorawan_sensor;
+    // removed: relation to Bucket-C entity Bacnet_Object (AP-C2)
 
-    @OneToMany(mappedBy = "device")
-    private Set<Bacnet_Object> bacnet_object;
-
-    @OneToMany(mappedBy = "device")
-    private Set<DisruptiveSensor> disruptive_sensor;
+    // removed: relation to Bucket-C entity DisruptiveSensor (AP-C2)
 
     @OneToMany(mappedBy = "device", cascade = CascadeType.ALL)
     private Set<Device_IP_Address> device_ip_address;
 
-    @OneToMany(mappedBy = "device")
-    private Set<Datahoist> datahoist;
+    // removed: relation to Bucket-C entity Datahoist (AP-C2)
 
-    @OneToMany(mappedBy = "device")
-    private Set<MyDevicesSensor> my_devices_sensor;
+    // removed: relation to Bucket-C entity MyDevicesSensor (AP-C2)
 
-    @OneToMany(mappedBy = "device")
-    private Set<Monnit_Sensor> monnit_sensor;
+    // removed: relation to Bucket-C entity Monnit_Sensor (AP-C2)
 
-    @OneToMany(mappedBy = "device")
-    private Set<PelicanSensor> pelican_sensor;
+    // removed: relation to Bucket-C entity PelicanSensor (AP-C2)
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
-    private Set<Snmp_Dump> snmp_dump;
+    // removed: relation to Bucket-C entity Snmp_Dump (AP-C2)
 
+    // removed: relation to Bucket-C entity KNXGroup (AP-C2)
 
-    @OneToMany(mappedBy = "device")
-    private Set<KNXGroup> knx_group;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
-    private Set<SnmpObject> snmp_object;
+    // removed: relation to Bucket-C entity SnmpObject (AP-C2)
 
     @ManyToMany()
     @JoinTable(name = "device_document", joinColumns = @JoinColumn(name = "device_id"), inverseJoinColumns = @JoinColumn(name = "document_id"))
@@ -2923,12 +2902,9 @@ public class Device {
     @JoinTable(name = "device_media", joinColumns = @JoinColumn(name = "device_id"), inverseJoinColumns = @JoinColumn(name = "media_id"))
     private Set<Media> media;
 
-    @ManyToMany()
-    @JoinTable(name = "device_check_list_template", joinColumns = @JoinColumn(name = "device_id"), inverseJoinColumns = @JoinColumn(name = "check_list_template_id"))
-    private Set<CheckListTemplate> check_list_template;
+    // removed: relation to Bucket-C entity CheckListTemplate (AP-C4)
 
-    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL)
-    private Set<CheckListRecord> check_list_record;
+    // removed: relation to Bucket-C entity CheckListRecord (AP-C4)
 
     @OneToMany(mappedBy = "device", cascade = CascadeType.ALL)
     private Set<AssetDeviceMapping> asset_device_mapping;
@@ -2936,40 +2912,30 @@ public class Device {
     @OneToMany(mappedBy = "device", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<MeasuringInstrument> measuring_instrument;
 
-    @ManyToMany()
-    @JoinTable(name = "device_inventory", joinColumns = @JoinColumn(name = "device_id"), inverseJoinColumns = @JoinColumn(name = "inventory_id"))
-    private Set<Inventory> inventory;
+    // removed: relation to Bucket-C entity Inventory (AP-C8)
 
     @OneToOne(mappedBy = "device", cascade = CascadeType.ALL)
     private GlobalQrcode global_qrcode;
 
-    @OneToMany(mappedBy = "device", cascade = CascadeType.ALL)
-    private Set<RecordChecklist> record_checklist;
+    // removed: relation to Bucket-C entity RecordChecklist (AP-C4)
 
-    @ManyToMany()
-    @JoinTable(name = "device_global_checklist", joinColumns = @JoinColumn(name = "device_id"), inverseJoinColumns = @JoinColumn(name = "global_checklist_id"))
-    private Set<GlobalChecklist> global_checklist;
+    // removed: relation to Bucket-C entity GlobalChecklist (AP-C4)
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
-    private Set<GlobalInspectionRelation> global_inspection_relation;
+    // removed: relation to Bucket-C entity GlobalInspectionRelation (AP-C4)
 
-    @OneToMany(mappedBy = "device")
-    private Set<DaintreeDevice> daintree_device;
+    // removed: relation to Bucket-C entity DaintreeDevice (AP-C2)
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<DeviceConditions> device_conditions;
 
-    @OneToMany(mappedBy = "device")
-    private Set<EcobeeSensor> ecobee_sensor;
+    // removed: relation to Bucket-C entity EcobeeSensor (AP-C2)
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<Specifications> specifications;
 
-    @OneToMany(mappedBy = "device")
-    private Set<ModbusRegister> modbus_register;
+    // removed: relation to Bucket-C entity ModbusRegister (AP-C2)
 
-    @OneToMany(mappedBy = "device")
-    private Set<SiemensAsset> siemens_asset;
+    // removed: relation to Bucket-C entity SiemensAsset (AP-C2)
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "device")
     private DeviceOnboardStatus device_onboard_status;
@@ -2978,12 +2944,9 @@ public class Device {
     private Integer poly_lens_count;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
-    private Set<PolyLensDevice> poly_lens_device;
+    // removed: relation to Bucket-C entity PolyLensDevice (AP-C2)
 
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
-    private Set<MqttDevice> mqtt_device;
+    // removed: relation to Bucket-C entity MqttDevice (AP-C2)
 
     @Column(length = 32)
     private Integer mqtt_count;
@@ -3003,8 +2966,7 @@ public class Device {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<ClientBarCode> client_barcode;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
-    private Set<GlobalChecklistConditions> global_checklist_conditions;
+    // removed: relation to Bucket-C entity GlobalChecklistConditions (AP-C4)
 
     @Column(name = "cost_value", precision = 16, scale = 2)
     private BigDecimal cost_value;
@@ -3058,12 +3020,9 @@ public class Device {
     @JoinColumn(name = "assigned_user_email", referencedColumnName = "email")
     User user;
 
-    @ManyToMany
-    @JoinTable(name = "device_technician", joinColumns = @JoinColumn(name = "device_id"), inverseJoinColumns = @JoinColumn(name = "technician_id"))
-    private Set<Technician> technician;
+    // removed: relation to Bucket-C entity Technician (AP-C3)
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "device")
-    private InventoryDevice inventory_device;
+    // removed: relation to Bucket-C entity InventoryDevice (AP-C8)
 
     public String getOperational_status() {
         return operational_status;
@@ -3113,8 +3072,7 @@ public class Device {
         this.ai_call = ai_call;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
-    private Set<GaiameshController> gaiamesh_controller;
+    // removed: relation to Bucket-C entity GaiameshController (AP-C2)
 
     public String getId() {
         return id;
@@ -3124,13 +3082,7 @@ public class Device {
         this.id = id;
     }
 
-    public Docker getDocker() {
-        return docker;
-    }
-
-    public void setDocker(Docker docker) {
-        this.docker = docker;
-    }
+    // removed: getter/setter for Bucket-D Docker (edge-only)
 
     public String getParent() {
         return parent;
@@ -3189,14 +3141,7 @@ public class Device {
         this.other_vendor_3 = other_vendor_3;
     }
 
-    public Snmp_Configuration getSnmp_configuration() {
-        return snmp_configuration;
-    }
-
-    public void setSnmp_configuration(Snmp_Configuration snmp_configuration) {
-        this.snmp_configuration = snmp_configuration;
-        snmp_configuration.setDevice(this);
-    }
+    // removed: getter/setter for Bucket-C Snmp_Configuration (AP-C2)
 
     public Set<Interface> getInterfaces() {
         return interfaces;
@@ -3537,13 +3482,7 @@ public class Device {
         this.disruptive_status = disruptive_status;
     }
 
-    public Product_Details getProduct_details() {
-        return product_details;
-    }
-
-    public void setProduct_details(Product_Details product_details) {
-        this.product_details = product_details;
-    }
+    // removed: getter/setter for Bucket-C Product_Details (AP-C8)
 
     public String getDisplay_name() {
         return display_name;
@@ -3569,53 +3508,17 @@ public class Device {
         this.snmp_parent_index = snmp_parent_index;
     }
 
-    public Set<RemoteAccessSession> getRemote_access_session() {
-        return remote_access_session;
-    }
+    // removed: getter/setter for Bucket-D RemoteAccessSession (edge-only)
 
-    public void setRemote_access_session(Set<RemoteAccessSession> remote_access_session) {
-        this.remote_access_session = remote_access_session;
-    }
+    // removed: getter/setter for Bucket-C History (AP-C6)
 
-    public Set<History> getHistory() {
-        return history;
-    }
+    // removed: getter/setter for Bucket-C Ticket (AP-C3)
 
-    public void setHistory(Set<History> history) {
-        this.history = history;
-    }
+    // removed: getter/setter for Bucket-C Lorawan_Sensor (AP-C2)
 
-    public Set<Ticket> getTicket() {
-        return ticket;
-    }
+    // removed: getter/setter for Bucket-C Bacnet_Object (AP-C2)
 
-    public void setTicket(Set<Ticket> ticket) {
-        this.ticket = ticket;
-    }
-
-    public Set<Lorawan_Sensor> getLorawan_sensor() {
-        return lorawan_sensor;
-    }
-
-    public void setLorawan_sensor(Set<Lorawan_Sensor> lorawan_sensor) {
-        this.lorawan_sensor = lorawan_sensor;
-    }
-
-    public Set<Bacnet_Object> getBacnet_object() {
-        return bacnet_object;
-    }
-
-    public void setBacnet_object(Set<Bacnet_Object> bacnet_object) {
-        this.bacnet_object = bacnet_object;
-    }
-
-    public Set<DisruptiveSensor> getDisruptive_sensor() {
-        return disruptive_sensor;
-    }
-
-    public void setDisruptive_sensor(Set<DisruptiveSensor> disruptive_sensor) {
-        this.disruptive_sensor = disruptive_sensor;
-    }
+    // removed: getter/setter for Bucket-C DisruptiveSensor (AP-C2)
 
     public Set<Device_IP_Address> getDevice_ip_address() {
         return device_ip_address;
@@ -3634,21 +3537,9 @@ public class Device {
         this.id = id;
     }
 
-    public Set<Datahoist> getDatahoist() {
-        return datahoist;
-    }
+    // removed: getter/setter for Bucket-C Datahoist (AP-C2)
 
-    public void setDatahoist(Set<Datahoist> datahoist) {
-        this.datahoist = datahoist;
-    }
-
-    public Set<MyDevicesSensor> getMy_devices_sensor() {
-        return my_devices_sensor;
-    }
-
-    public void setMy_devices_sensor(Set<MyDevicesSensor> my_devices_sensor) {
-        this.my_devices_sensor = my_devices_sensor;
-    }
+    // removed: getter/setter for Bucket-C MyDevicesSensor (AP-C2)
 
     public Integer getMy_devices_count() {
         return my_devices_count;
@@ -3803,29 +3694,11 @@ public class Device {
         this.local_vendor_sms_alert = local_vendor_sms_alert;
     }
 
-    public Set<Monnit_Sensor> getMonnit_sensor() {
-        return monnit_sensor;
-    }
+    // removed: getter/setter for Bucket-C Monnit_Sensor (AP-C2)
 
-    public void setMonnit_sensor(Set<Monnit_Sensor> monnit_sensor) {
-        this.monnit_sensor = monnit_sensor;
-    }
+    // removed: getter/setter for Bucket-C PelicanSensor (AP-C2)
 
-    public Set<PelicanSensor> getPelican_sensor() {
-        return pelican_sensor;
-    }
-
-    public void setPelican_sensor(Set<PelicanSensor> pelican_sensor) {
-        this.pelican_sensor = pelican_sensor;
-    }
-
-    public Set<KNXGroup> getKnx_group() {
-        return knx_group;
-    }
-
-    public void setKnx_group(Set<KNXGroup> knx_group) {
-        this.knx_group = knx_group;
-    }
+    // removed: getter/setter for Bucket-C KNXGroup (AP-C2)
 
     public Set<Document> getDocument() {
         return document;
@@ -3843,13 +3716,7 @@ public class Device {
         this.media = media;
     }
 
-    public Set<CheckListTemplate> getCheck_list_template() {
-        return check_list_template;
-    }
-
-    public void setCheck_list_template(Set<CheckListTemplate> check_list_template) {
-        this.check_list_template = check_list_template;
-    }
+    // removed: getter/setter for Bucket-C CheckListTemplate (AP-C4)
 
     public String getSubsystem_parent_id() {
         return subsystem_parent_id;
@@ -3867,13 +3734,7 @@ public class Device {
         this.subsystem_count = subsystem_count;
     }
 
-    public Set<CheckListRecord> getCheck_list_record() {
-        return check_list_record;
-    }
-
-    public void setCheck_list_record(Set<CheckListRecord> check_list_record) {
-        this.check_list_record = check_list_record;
-    }
+    // removed: getter/setter for Bucket-C CheckListRecord (AP-C4)
 
     public String getCustom_fields() {
         return custom_fields;
@@ -3955,21 +3816,9 @@ public class Device {
         this.snmp_object_status = snmp_object_status;
     }
 
-    public Set<SnmpObject> getSnmp_object() {
-        return snmp_object;
-    }
+    // removed: getter/setter for Bucket-C SnmpObject (AP-C2)
 
-    public void setSnmp_object(Set<SnmpObject> snmp_object) {
-        this.snmp_object = snmp_object;
-    }
-
-    public Set<Inventory> getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Set<Inventory> inventory) {
-        this.inventory = inventory;
-    }
+    // removed: getter/setter for Bucket-C Inventory (AP-C8)
 
     public GlobalQrcode getGlobal_qrcode() {
         return global_qrcode;
@@ -3979,13 +3828,7 @@ public class Device {
         this.global_qrcode = global_qrcode;
     }
 
-    public Set<RecordChecklist> getRecord_checklist() {
-        return record_checklist;
-    }
-
-    public void setRecord_checklist(Set<RecordChecklist> record_checklist) {
-        this.record_checklist = record_checklist;
-    }
+    // removed: getter/setter for Bucket-C RecordChecklist (AP-C4)
 
     public Set<GlobalChecklist> getGlobal_checklist() {
         return global_checklist;
@@ -4011,14 +3854,7 @@ public class Device {
         this.record_checklist_count = record_checklist_count;
     }
 
-    public Set<GlobalInspectionRelation> getGlobal_inspection_relation() {
-        return global_inspection_relation;
-    }
-
-    public void setGlobal_inspection_relation(Set<GlobalInspectionRelation> global_inspection_relation) {
-        this.global_inspection_relation = global_inspection_relation;
-    }
-
+    // removed: getter/setter for Bucket-C GlobalInspectionRelation (AP-C4)
 
     public Integer getDaintree_count() {
         return daintree_count;
@@ -4044,13 +3880,7 @@ public class Device {
         this.qrcode_count = qrcode_count;
     }
 
-    public Set<DaintreeDevice> getDaintree_device() {
-        return daintree_device;
-    }
-
-    public void setDaintree_device(Set<DaintreeDevice> daintree_device) {
-        this.daintree_device = daintree_device;
-    }
+    // removed: getter/setter for Bucket-C DaintreeDevice (AP-C2)
 
     public String getAsset_image_url() {
         return asset_image_url;
@@ -4092,14 +3922,7 @@ public class Device {
         this.ecobee_status = ecobee_status;
     }
 
-    public Set<EcobeeSensor> getEcobee_sensor() {
-        return ecobee_sensor;
-    }
-
-    public void setEcobee_sensor(Set<EcobeeSensor> ecobee_sensor) {
-        this.ecobee_sensor = ecobee_sensor;
-    }
-
+    // removed: getter/setter for Bucket-C EcobeeSensor (AP-C2)
 
     public Set<Specifications> getSpecifications() {
         return specifications;
@@ -4125,22 +3948,9 @@ public class Device {
         this.modbus_status = modbus_status;
     }
 
-    public Set<ModbusRegister> getModbus_register() {
-        return modbus_register;
-    }
+    // removed: getter/setter for Bucket-C ModbusRegister (AP-C2)
 
-    public void setModbus_register(Set<ModbusRegister> modbus_register) {
-        this.modbus_register = modbus_register;
-    }
-
-
-    public Set<SiemensAsset> getSiemens_asset() {
-        return siemens_asset;
-    }
-
-    public void setSiemens_asset(Set<SiemensAsset> siemens_asset) {
-        this.siemens_asset = siemens_asset;
-    }
+    // removed: getter/setter for Bucket-C SiemensAsset (AP-C2)
 
     public String getCreated_email() {
         return created_email;
@@ -4239,13 +4049,7 @@ public class Device {
         this.digital_twin_image_url = digital_twin_image_url;
     }
 
-    public Set<PolyLensDevice> getPoly_lens_device() {
-        return poly_lens_device;
-    }
-
-    public void setPoly_lens_device(Set<PolyLensDevice> poly_lens_device) {
-        this.poly_lens_device = poly_lens_device;
-    }
+    // removed: getter/setter for Bucket-C PolyLensDevice (AP-C2)
 
     public Integer getPoly_lens_count() {
         return poly_lens_count;
@@ -4256,13 +4060,7 @@ public class Device {
     }
 
 
-    public Set<MqttDevice> getMqtt_device() {
-        return mqtt_device;
-    }
-
-    public void setMqtt_device(Set<MqttDevice> mqtt_device) {
-        this.mqtt_device = mqtt_device;
-    }
+    // removed: getter/setter for Bucket-C MqttDevice (AP-C2)
 
     public Integer getMqtt_count() {
         return mqtt_count;
@@ -4312,30 +4110,11 @@ public class Device {
         this.client_barcode = client_barcode;
     }
 
-    public Set<GlobalChecklistConditions> getGlobal_checklist_conditions() {
-        return global_checklist_conditions;
-    }
+    // removed: getter/setter for Bucket-C GlobalChecklistConditions (AP-C4)
 
-    public void setGlobal_checklist_conditions(Set<GlobalChecklistConditions> global_checklist_conditions) {
-        this.global_checklist_conditions = global_checklist_conditions;
-    }
+    // removed: getter/setter for Bucket-C Technician (AP-C3)
 
-
-    public Set<Technician> getTechnician() {
-        return technician;
-    }
-
-    public void setTechnician(Set<Technician> technician) {
-        this.technician = technician;
-    }
-
-    public InventoryDevice getInventory_device() {
-        return inventory_device;
-    }
-
-    public void setInventory_device(InventoryDevice inventory_device) {
-        this.inventory_device = inventory_device;
-    }
+    // removed: getter/setter for Bucket-C InventoryDevice (AP-C8)
 
     public BigInteger getDnd_timestamp() {
         return dnd_timestamp;
@@ -4354,13 +4133,7 @@ public class Device {
     }
 
 
-    public Set<GaiameshController> getGaiamesh_controller() {
-        return gaiamesh_controller;
-    }
-
-    public void setGaiamesh_controller(Set<GaiameshController> gaiamesh_controller) {
-        this.gaiamesh_controller = gaiamesh_controller;
-    }
+    // removed: getter/setter for Bucket-C GaiameshController (AP-C2)
 
     @Override
     public String toString() {
@@ -4421,7 +4194,6 @@ public class Device {
                 ", document_count=" + document_count +
                 ", media_count=" + media_count +
                 ", checklist_template_count=" + checklist_template_count +
-                ", docker=" + docker +
                 ", parent='" + parent + '\'' +
                 ", snmp_parent='" + snmp_parent + '\'' +
                 ", local_vendor_email_alert=" + local_vendor_email_alert +

@@ -11,7 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 
-import io.sclera.dto.HistoryDTO;
+// removed: unused import io.sclera.dto.HistoryDTO (AP-C6 history)
 import io.sclera.dto.touchscreen.DeviceIPAddressDTO;
 
 @Entity

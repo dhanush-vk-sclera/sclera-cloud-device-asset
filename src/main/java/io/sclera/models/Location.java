@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import io.sclera.dto.LocationAlertDTO;
 import io.sclera.dto.LocationDTO;
 import io.sclera.dto.touchscreen.DeviceMonitorSpaceDTO;
-import io.sclera.integration.dto.LocationIntegrationDTO;
+// removed: Bucket-D import io.sclera.integration.dto.LocationIntegrationDTO
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
@@ -575,38 +575,7 @@ import org.hibernate.annotations.ColumnDefault;
         resultSetMapping = "exportlocationmapping"
 )
 
-/***************************** Integration ********************************/
-
-@SqlResultSetMapping(
-        name = "locationintegrationbylocationidmapping",
-        classes = {
-                @ConstructorResult(
-                        targetClass = LocationIntegrationDTO.class,
-                        columns = {
-                                @ColumnResult(name = "locationId", type = String.class),
-                                @ColumnResult(name = "locationName", type = String.class),
-                                @ColumnResult(name = "floorId", type = String.class),
-                                @ColumnResult(name = "floorName", type = String.class),
-                                @ColumnResult(name = "buildingId", type = String.class),
-                                @ColumnResult(name = "buildingName", type = String.class),
-                                @ColumnResult(name = "locationType", type = String.class),
-                                @ColumnResult(name = "locationCode", type = String.class)
-                        }
-                )
-        }
-)
-
-@NamedNativeQuery(
-        name = "Location.getIntegrationByLocationId",
-        query = "SELECT  l.id as locationId, l.name as locationName, f.id as floorId, f.name as floorName, b.id as buildingId, b.name as buildingName, l.type as locationType, l.code AS locationCode"
-                + " FROM location l "
-                + " LEFT JOIN floor f ON l.floor_id = f.id"
-                + " LEFT JOIN building b ON f.building_id = b.id WHERE l.id = ?1",
-        resultSetMapping = "locationintegrationbylocationidmapping"
-)
-
-
-/***************************** Integration ********************************/
+// removed: Bucket-D integration mapping (locationintegrationbylocationidmapping) and query Location.getIntegrationByLocationId
 
 @SqlResultSetMapping(
         name = "locationsadcmapping",

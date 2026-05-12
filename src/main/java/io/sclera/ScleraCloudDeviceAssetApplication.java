@@ -1,4 +1,4 @@
-﻿package io.sclera;
+package io.sclera;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
