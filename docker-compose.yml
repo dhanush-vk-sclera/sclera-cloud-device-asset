@@ -1,0 +1,27 @@
+﻿version: "3.8"
+services:
+  mysql:
+    image: mysql:8
+    container_name: sclera-cloud-device-asset-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sclera_cloud_device_asset
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build: .
+    container_name: sclera-cloud-device-asset
+    depends_on:
+      - mysql
+    environment:
+      DB_USER: root
+      DB_PASS: root
+      KEYCLOAK_ISSUER_URI: http://localhost:8080/auth/realms/sclera
+    ports:
+      - "8085:8085"
+
+volumes:
+  mysql_data:
