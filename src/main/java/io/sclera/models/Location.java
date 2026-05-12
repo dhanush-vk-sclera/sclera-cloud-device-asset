@@ -641,28 +641,18 @@ public class Location {
     @OneToMany(mappedBy = "location")
     private Set<Device> device;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "location")
-    private Set<PropertyQrcode> property_qrcode;
-
+    // removed: relation to Bucket-C entity PropertyQrcode (AP-C4)
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "location")
     private GlobalQrcode global_qrcode;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "location")
-    private Set<RecordChecklist> record_checklist;
-
-
-    @ManyToMany()
-    @JoinTable(name = "location_global_checklist", joinColumns = @JoinColumn(name = "location_id"), inverseJoinColumns = @JoinColumn(name = "global_checklist_id"))
-    private Set<GlobalChecklist> global_checklist;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "location")
-    private Set<GlobalInspectionRelation> global_inspection_relation;
+    // removed: relation to Bucket-C entity RecordChecklist (AP-C4)
+    // removed: relation to Bucket-C entity GlobalChecklist (AP-C4)
+    // removed: relation to Bucket-C entity GlobalInspectionRelation (AP-C4)
 
     @ManyToMany(mappedBy = "location")
     private Set<MeasuringInstrument> measuring_instrument;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "location")
-    private Set<PmsAttributes> pms_attributes;
+    // removed: relation to Bucket-C entity PmsAttributes (AP-C2)
 
     @Column(length = 128, columnDefinition = "varchar(128) default 'generic'")
     private String type;
@@ -688,8 +678,7 @@ public class Location {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "location")
     private Set<ClientBarCode> client_barcode;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "location")
-    private Set<GlobalChecklistConditions> global_checklist_conditions;
+    // removed: relation to Bucket-C entity GlobalChecklistConditions (AP-C4)
 
     public String getType() {
         return type;
@@ -747,36 +736,12 @@ public class Location {
         this.area = area;
     }
 
-    public Set<PropertyQrcode> getProperty_qrcode() {
-        return property_qrcode;
-    }
-
-    public void setProperty_qrcode(Set<PropertyQrcode> property_qrcode) {
-        this.property_qrcode = property_qrcode;
-    }
-
     public GlobalQrcode getGlobal_qrcode() {
         return global_qrcode;
     }
 
     public void setGlobal_qrcode(GlobalQrcode global_qrcode) {
         this.global_qrcode = global_qrcode;
-    }
-
-    public Set<RecordChecklist> getRecord_checklist() {
-        return record_checklist;
-    }
-
-    public void setRecord_checklist(Set<RecordChecklist> record_checklist) {
-        this.record_checklist = record_checklist;
-    }
-
-    public Set<GlobalChecklist> getGlobal_checklist() {
-        return global_checklist;
-    }
-
-    public void setGlobal_checklist(Set<GlobalChecklist> global_checklist) {
-        this.global_checklist = global_checklist;
     }
 
     public String getRecord_checklist_status() {
@@ -793,14 +758,6 @@ public class Location {
 
     public void setRecord_checklist_count(Integer record_checklist_count) {
         this.record_checklist_count = record_checklist_count;
-    }
-
-    public Set<GlobalInspectionRelation> getGlobal_inspection_relation() {
-        return global_inspection_relation;
-    }
-
-    public void setGlobal_inspection_relation(Set<GlobalInspectionRelation> global_inspection_relation) {
-        this.global_inspection_relation = global_inspection_relation;
     }
 
     public Integer getZ_index() {
@@ -825,14 +782,6 @@ public class Location {
 
     public void setMeasuring_instrument(Set<MeasuringInstrument> measuring_instrument) {
         this.measuring_instrument = measuring_instrument;
-    }
-
-    public Set<PmsAttributes> getPms_attributes() {
-        return pms_attributes;
-    }
-
-    public void setPms_attributes(Set<PmsAttributes> pms_attributes) {
-        this.pms_attributes = pms_attributes;
     }
 
     public String getCode() {
@@ -891,11 +840,4 @@ public class Location {
         this.client_barcode = client_barcode;
     }
 
-    public Set<GlobalChecklistConditions> getGlobal_checklist_conditions() {
-        return global_checklist_conditions;
-    }
-
-    public void setGlobal_checklist_conditions(Set<GlobalChecklistConditions> global_checklist_conditions) {
-        this.global_checklist_conditions = global_checklist_conditions;
-    }
 }

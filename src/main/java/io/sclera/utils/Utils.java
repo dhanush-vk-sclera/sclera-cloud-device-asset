@@ -13,9 +13,9 @@ import io.sclera.dto.touchscreen.settings.NetworkConditionsResponseDTO;
 import io.sclera.dto.touchscreen.settings.dockercli.ConnectorDTO;
 import io.sclera.dto.touchscreen.settings.dockercli.ContainerDTO;
 import io.sclera.dto.touchscreen.settings.dockercli.NetworkDTO;
-import io.sclera.service.MasterSlaveAPICallService;
-import io.sclera.service.WebClientService;
-import io.sclera.service.touchscreen.RestartNetworkService;
+// removed: import io.sclera.service.MasterSlaveAPICallService (Bucket D)
+// removed: import io.sclera.service.WebClientService (Bucket D)
+// removed: import io.sclera.service.touchscreen.RestartNetworkService (Bucket D)
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONArray;
@@ -54,17 +54,13 @@ public class Utils {
     @Autowired
     NetworkUtils networkUtils;
 
-    @Autowired
-    RestartNetworkService restartNetworkService;
+    // removed: @Autowired RestartNetworkService restartNetworkService (Bucket D)
 
     @Autowired
     DockerUtils dockerUtils;
 
-    @Autowired
-    WebClientService webClientService;
-
-    @Autowired
-    MasterSlaveAPICallService masterSlaveAPICallService;
+    // removed: @Autowired WebClientService webClientService (Bucket D)
+    // removed: @Autowired MasterSlaveAPICallService masterSlaveAPICallService (Bucket D)
 
     //    private final String UUIDFilePath = "/home/rajath/Desktop/.sclera";
     private final String UUIDFilePath = "/home/sclera/.sclera";
@@ -299,9 +295,9 @@ public class Utils {
         boolean isContainerPresent = false;
 
         if (network_origin == 1) {
-            isContainerPresent = restartNetworkService.checkIfContainerExist(name);
+            isContainerPresent = false /* stubbed: restartNetworkService removed (Bucket D) */;
         } else if (network_origin == 0) {
-            isContainerPresent = restartNetworkService.checkIfContainerExists(name);
+            isContainerPresent = false /* stubbed: restartNetworkService removed (Bucket D) */;
         }
 
         log.info("Is Container present : {}", isContainerPresent);
@@ -319,15 +315,15 @@ public class Utils {
         boolean isNetworkPresent;
 
         if (network_origin == 0) {
-            isContainerPresent = Boolean.parseBoolean(masterSlaveAPICallService.accessSlaveFromMaster("http://10.255.255.254:8888/api/settings/checkContainerExistence/" + name, "POST", null, null));
+            isContainerPresent = false /* stubbed: masterSlaveAPICallService removed (Bucket D) */;
         } else {
-            isContainerPresent = restartNetworkService.checkIfContainerExists(name);
+            isContainerPresent = false /* stubbed: restartNetworkService removed (Bucket D) */;
         }
 
         if (network_origin == 0) {
-            isNetworkPresent = Boolean.parseBoolean(masterSlaveAPICallService.accessSlaveFromMaster("http://10.255.255.254:8888/api/settings/checkDockerNetworkExistence/" + macvlan_name, "POST", null, null));
+            isNetworkPresent = false /* stubbed: masterSlaveAPICallService removed (Bucket D) */;
         } else {
-            isNetworkPresent = restartNetworkService.checkIfDockerNetworkExists(macvlan_name);
+            isNetworkPresent = false /* stubbed: restartNetworkService removed (Bucket D) */;
         }
 
         // If container and network is already deleted return true
@@ -565,9 +561,9 @@ public class Utils {
 
         if (network_origin == 0 || network_origin == 1) {
             if (network_origin == 1) {
-                isContainerPresent = restartNetworkService.checkIfContainerExist(name);
+                isContainerPresent = false /* stubbed: restartNetworkService removed (Bucket D) */;
             } else if (network_origin == 0) {
-                isContainerPresent = restartNetworkService.checkIfContainerExists(name);
+                isContainerPresent = false /* stubbed: restartNetworkService removed (Bucket D) */;
             }
 
             log.info("IS CONTAINER PRESENT: {}", isContainerPresent);
@@ -590,18 +586,18 @@ public class Utils {
     public NetworkConditionsResponseDTO deleteGuestDockerUsingKill(String name, String macvlan_name, Integer network_origin) {
         var isContainerPresent = false;
         if (network_origin == 1) {
-            isContainerPresent = restartNetworkService.checkIfContainerExists(name);
+            isContainerPresent = false /* stubbed: restartNetworkService removed (Bucket D) */;
             log.info("Is Container Present.... {}", isContainerPresent);
         } else if (network_origin == 0) {
-            isContainerPresent = Boolean.parseBoolean(masterSlaveAPICallService.accessSlaveFromMaster("http://10.255.255.254:8888/api/settings/checkContainerExistence/" + name, "POST", null, null));
+            isContainerPresent = false /* stubbed: masterSlaveAPICallService removed (Bucket D) */;
             log.info("Is Container Present..... {}", isContainerPresent);
         }
 
         var isNetworkPresent = false;
         if (network_origin == 1) {
-            isNetworkPresent = restartNetworkService.checkIfDockerNetworkExists(macvlan_name);
+            isNetworkPresent = false /* stubbed: restartNetworkService removed (Bucket D) */;
         } else if (network_origin == 0) {
-            isNetworkPresent = Boolean.parseBoolean(masterSlaveAPICallService.accessSlaveFromMaster("http://10.255.255.254:8888/api/settings/checkDockerNetworkExistence/" + macvlan_name, "POST", null, null));
+            isNetworkPresent = false /* stubbed: masterSlaveAPICallService removed (Bucket D) */;
         }
 
         //If container and network is already deleted return true
@@ -873,7 +869,7 @@ public class Utils {
 
 
     public String addImageByUrl(String link, String directory, String file_name, String server_image_url) throws IOException {
-        byte[] image = webClientService.getImageBytesByUrl(link);
+        byte[] image = new byte[0] /* stubbed: webClientService removed (Bucket D) */;
         String extension = this.getExtensionByUrl(link);
         return addFileToServer(image, directory, file_name, extension, server_image_url);
     }

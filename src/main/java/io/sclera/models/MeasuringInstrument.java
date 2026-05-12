@@ -780,11 +780,8 @@ public class MeasuringInstrument {
     @ManyToOne(fetch = FetchType.LAZY)
     private Device device;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "measuring_instrument")
-    private Set<Conditions> conditions;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "measuring_instrument")
-    private Set<History> history;
+    // removed: relation to Bucket-C entity Conditions (AP-C2)
+    // removed: relation to Bucket-C entity History (AP-C6)
 
     @ManyToMany()
     @JoinTable(name = "measuring_instrument_location", joinColumns = @JoinColumn(name = "measuring_instrument_id"), inverseJoinColumns = @JoinColumn(name = "location_id"))
@@ -939,23 +936,6 @@ public class MeasuringInstrument {
     public void setUser_data_name(String user_data_name) {
         this.user_data_name = user_data_name;
     }
-
-    public Set<Conditions> getConditions() {
-        return conditions;
-    }
-
-    public void setConditions(Set<Conditions> conditions) {
-        this.conditions = conditions;
-    }
-
-    public Set<History> getHistory() {
-        return history;
-    }
-
-    public void setHistory(Set<History> history) {
-        this.history = history;
-    }
-
 
     public Integer getShow_on_map() {
         return show_on_map;

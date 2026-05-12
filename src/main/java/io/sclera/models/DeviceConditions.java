@@ -72,8 +72,9 @@ public class DeviceConditions {
     @ManyToOne
     private Device device;
 
-    @ManyToOne
-    private AlertProfile alert_profile;
+    // removed: relation to Bucket-C entity AlertProfile (AP-C3)
+    @Column(length = 128)
+    private String alert_profile_id;
 
     private BigInteger last_alerted_time;
 
@@ -137,12 +138,12 @@ public class DeviceConditions {
         this.device = device;
     }
 
-    public AlertProfile getAlert_profile() {
-        return alert_profile;
+    public String getAlert_profile_id() {
+        return alert_profile_id;
     }
 
-    public void setAlert_profile(AlertProfile alert_profile) {
-        this.alert_profile = alert_profile;
+    public void setAlert_profile_id(String alert_profile_id) {
+        this.alert_profile_id = alert_profile_id;
     }
 
     public BigInteger getLast_alerted_time() {
