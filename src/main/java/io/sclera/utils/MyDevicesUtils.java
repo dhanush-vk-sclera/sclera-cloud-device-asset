@@ -74,7 +74,7 @@ public class MyDevicesUtils {
         myDevicesUnitsMapping.put("gpkg","g/kg");
         myDevicesUnitsMapping.put("fau","FAU");
         myDevicesUnitsMapping.put("ntu","NTU");
-        myDevicesUnitsMapping.put("w⋅m⁻²","w/m2");
+        myDevicesUnitsMapping.put("w_per_m2","w/m2");
         myDevicesUnitsMapping.put("uwpcm2","\u00B5W/cm2");
         myDevicesUnitsMapping.put("db","dB");
         myDevicesUnitsMapping.put("g","g");

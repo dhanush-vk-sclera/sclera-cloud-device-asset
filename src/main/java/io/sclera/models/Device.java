@@ -2728,7 +2728,9 @@ public class Device {
     @Column(length = 32)
     private Integer checklist_template_count;
 
-    // removed: relation to Bucket-D entity Docker (edge-only)
+    // removed: relation to Docker (edge-only)
+    @javax.persistence.Transient
+    // (Docker relation skipped — Bucket-D)
 
     //	@OneToOne(cascade = CascadeType.ALL)
     private String parent;
@@ -2846,7 +2848,9 @@ public class Device {
     @ManyToOne
     private Phonebook other_vendor_3;
 
-    // removed: relation to Bucket-C entity Snmp_Configuration (AP-C2)
+    // removed: relation to Snmp_Configuration (AP-C2)
+    @javax.persistence.Transient
+    private Snmp_Configuration snmp_configuration;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<Interface> interfaces;
@@ -2859,39 +2863,67 @@ public class Device {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<Notes> notes;
 
-    // removed: relation to Bucket-C entity Product_Details (AP-C8)
+    // removed: relation to Product_Details (AP-C8)
+    @javax.persistence.Transient
+    private Product_Details product_details;
 
-    // removed: relation to Bucket-D entity RemoteAccessSession (edge-only)
+    // removed: relation to RemoteAccessSession (edge-only)
+    @javax.persistence.Transient
+    private RemoteAccessSession remote_access_session;
 
     @ManyToOne
     private Location location;
 
-    // removed: relation to Bucket-C entity History (AP-C6)
+    // removed: relation to History (AP-C6)
+    @javax.persistence.Transient
+    private java.util.Set<History> history;
 
-    // removed: relation to Bucket-C entity Ticket (AP-C3)
+    // removed: relation to Ticket (AP-C3)
+    @javax.persistence.Transient
+    private java.util.Set<Ticket> ticket;
 
-    // removed: relation to Bucket-C entity Lorawan_Sensor (AP-C2)
+    // removed: relation to Lorawan_Sensor (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<Lorawan_Sensor> lorawan_sensor;
 
-    // removed: relation to Bucket-C entity Bacnet_Object (AP-C2)
+    // removed: relation to Bacnet_Object (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<Bacnet_Object> bacnet_object;
 
-    // removed: relation to Bucket-C entity DisruptiveSensor (AP-C2)
+    // removed: relation to DisruptiveSensor (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<DisruptiveSensor> disruptive_sensor;
 
     @OneToMany(mappedBy = "device", cascade = CascadeType.ALL)
     private Set<Device_IP_Address> device_ip_address;
 
-    // removed: relation to Bucket-C entity Datahoist (AP-C2)
+    // removed: relation to Datahoist (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<Datahoist> datahoist;
 
-    // removed: relation to Bucket-C entity MyDevicesSensor (AP-C2)
+    // removed: relation to MyDevicesSensor (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<MyDevicesSensor> my_devices_sensor;
 
-    // removed: relation to Bucket-C entity Monnit_Sensor (AP-C2)
+    // removed: relation to Monnit_Sensor (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<Monnit_Sensor> monnit_sensor;
 
-    // removed: relation to Bucket-C entity PelicanSensor (AP-C2)
+    // removed: relation to PelicanSensor (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<PelicanSensor> pelican_sensor;
 
-    // removed: relation to Bucket-C entity Snmp_Dump (AP-C2)
+    // removed: relation to Snmp_Dump (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<Snmp_Dump> snmp_dump;
 
-    // removed: relation to Bucket-C entity KNXGroup (AP-C2)
+    // removed: relation to KNXGroup (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<KNXGroup> knx_group;
 
-    // removed: relation to Bucket-C entity SnmpObject (AP-C2)
+    // removed: relation to SnmpObject (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<SnmpObject> snmp_object;
 
     @ManyToMany()
     @JoinTable(name = "device_document", joinColumns = @JoinColumn(name = "device_id"), inverseJoinColumns = @JoinColumn(name = "document_id"))
@@ -2902,9 +2934,13 @@ public class Device {
     @JoinTable(name = "device_media", joinColumns = @JoinColumn(name = "device_id"), inverseJoinColumns = @JoinColumn(name = "media_id"))
     private Set<Media> media;
 
-    // removed: relation to Bucket-C entity CheckListTemplate (AP-C4)
+    // removed: relation to CheckListTemplate (AP-C4)
+    @javax.persistence.Transient
+    private java.util.Set<CheckListTemplate> check_list_template;
 
-    // removed: relation to Bucket-C entity CheckListRecord (AP-C4)
+    // removed: relation to CheckListRecord (AP-C4)
+    @javax.persistence.Transient
+    private java.util.Set<CheckListRecord> check_list_record;
 
     @OneToMany(mappedBy = "device", cascade = CascadeType.ALL)
     private Set<AssetDeviceMapping> asset_device_mapping;
@@ -2912,30 +2948,46 @@ public class Device {
     @OneToMany(mappedBy = "device", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<MeasuringInstrument> measuring_instrument;
 
-    // removed: relation to Bucket-C entity Inventory (AP-C8)
+    // removed: relation to Inventory (AP-C8)
+    @javax.persistence.Transient
+    private Inventory inventory;
 
     @OneToOne(mappedBy = "device", cascade = CascadeType.ALL)
     private GlobalQrcode global_qrcode;
 
-    // removed: relation to Bucket-C entity RecordChecklist (AP-C4)
+    // removed: relation to RecordChecklist (AP-C4)
+    @javax.persistence.Transient
+    private java.util.Set<RecordChecklist> record_checklist;
 
-    // removed: relation to Bucket-C entity GlobalChecklist (AP-C4)
+    // removed: relation to GlobalChecklist (AP-C4)
+    @javax.persistence.Transient
+    private java.util.Set<GlobalChecklist> global_checklist;
 
-    // removed: relation to Bucket-C entity GlobalInspectionRelation (AP-C4)
+    // removed: relation to GlobalInspectionRelation (AP-C4)
+    @javax.persistence.Transient
+    private java.util.Set<GlobalInspectionRelation> global_inspection_relation;
 
-    // removed: relation to Bucket-C entity DaintreeDevice (AP-C2)
+    // removed: relation to DaintreeDevice (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<DaintreeDevice> daintree_device;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<DeviceConditions> device_conditions;
 
-    // removed: relation to Bucket-C entity EcobeeSensor (AP-C2)
+    // removed: relation to EcobeeSensor (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<EcobeeSensor> ecobee_sensor;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "device")
     private Set<Specifications> specifications;
 
-    // removed: relation to Bucket-C entity ModbusRegister (AP-C2)
+    // removed: relation to ModbusRegister (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<ModbusRegister> modbus_register;
 
-    // removed: relation to Bucket-C entity SiemensAsset (AP-C2)
+    // removed: relation to SiemensAsset (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<SiemensAsset> siemens_asset;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "device")
     private DeviceOnboardStatus device_onboard_status;
@@ -3072,7 +3124,9 @@ public class Device {
         this.ai_call = ai_call;
     }
 
-    // removed: relation to Bucket-C entity GaiameshController (AP-C2)
+    // removed: relation to GaiameshController (AP-C2)
+    @javax.persistence.Transient
+    private java.util.Set<GaiameshController> gaiamesh_controller;
 
     public String getId() {
         return id;
@@ -4290,4 +4344,57 @@ public class Device {
     public void setAsset_tag_images_url(String asset_tag_images_url) {
         this.asset_tag_images_url = asset_tag_images_url;
     }
+
+    public Snmp_Configuration getSnmp_configuration() { return snmp_configuration; }
+    public void setSnmp_configuration(Snmp_Configuration snmp_configuration) { this.snmp_configuration = snmp_configuration; }
+    public Product_Details getProduct_details() { return product_details; }
+    public void setProduct_details(Product_Details product_details) { this.product_details = product_details; }
+    public RemoteAccessSession getRemote_access_session() { return remote_access_session; }
+    public void setRemote_access_session(RemoteAccessSession remote_access_session) { this.remote_access_session = remote_access_session; }
+    public java.util.Set<History> getHistory() { return history; }
+    public void setHistory(java.util.Set<History> history) { this.history = history; }
+    public java.util.Set<Ticket> getTicket() { return ticket; }
+    public void setTicket(java.util.Set<Ticket> ticket) { this.ticket = ticket; }
+    public java.util.Set<Lorawan_Sensor> getLorawan_sensor() { return lorawan_sensor; }
+    public void setLorawan_sensor(java.util.Set<Lorawan_Sensor> lorawan_sensor) { this.lorawan_sensor = lorawan_sensor; }
+    public java.util.Set<Bacnet_Object> getBacnet_object() { return bacnet_object; }
+    public void setBacnet_object(java.util.Set<Bacnet_Object> bacnet_object) { this.bacnet_object = bacnet_object; }
+    public java.util.Set<DisruptiveSensor> getDisruptive_sensor() { return disruptive_sensor; }
+    public void setDisruptive_sensor(java.util.Set<DisruptiveSensor> disruptive_sensor) { this.disruptive_sensor = disruptive_sensor; }
+    public java.util.Set<Datahoist> getDatahoist() { return datahoist; }
+    public void setDatahoist(java.util.Set<Datahoist> datahoist) { this.datahoist = datahoist; }
+    public java.util.Set<MyDevicesSensor> getMy_devices_sensor() { return my_devices_sensor; }
+    public void setMy_devices_sensor(java.util.Set<MyDevicesSensor> my_devices_sensor) { this.my_devices_sensor = my_devices_sensor; }
+    public java.util.Set<Monnit_Sensor> getMonnit_sensor() { return monnit_sensor; }
+    public void setMonnit_sensor(java.util.Set<Monnit_Sensor> monnit_sensor) { this.monnit_sensor = monnit_sensor; }
+    public java.util.Set<PelicanSensor> getPelican_sensor() { return pelican_sensor; }
+    public void setPelican_sensor(java.util.Set<PelicanSensor> pelican_sensor) { this.pelican_sensor = pelican_sensor; }
+    
+    
+    public java.util.Set<KNXGroup> getKnx_group() { return knx_group; }
+    public void setKnx_group(java.util.Set<KNXGroup> knx_group) { this.knx_group = knx_group; }
+    public java.util.Set<SnmpObject> getSnmp_object() { return snmp_object; }
+    public void setSnmp_object(java.util.Set<SnmpObject> snmp_object) { this.snmp_object = snmp_object; }
+    public java.util.Set<CheckListTemplate> getCheck_list_template() { return check_list_template; }
+    public void setCheck_list_template(java.util.Set<CheckListTemplate> check_list_template) { this.check_list_template = check_list_template; }
+    public java.util.Set<CheckListRecord> getCheck_list_record() { return check_list_record; }
+    public void setCheck_list_record(java.util.Set<CheckListRecord> check_list_record) { this.check_list_record = check_list_record; }
+    public Inventory getInventory() { return inventory; }
+    public void setInventory(Inventory inventory) { this.inventory = inventory; }
+    public java.util.Set<RecordChecklist> getRecord_checklist() { return record_checklist; }
+    public void setRecord_checklist(java.util.Set<RecordChecklist> record_checklist) { this.record_checklist = record_checklist; }
+    
+    
+    public java.util.Set<GlobalInspectionRelation> getGlobal_inspection_relation() { return global_inspection_relation; }
+    public void setGlobal_inspection_relation(java.util.Set<GlobalInspectionRelation> global_inspection_relation) { this.global_inspection_relation = global_inspection_relation; }
+    public java.util.Set<DaintreeDevice> getDaintree_device() { return daintree_device; }
+    public void setDaintree_device(java.util.Set<DaintreeDevice> daintree_device) { this.daintree_device = daintree_device; }
+    public java.util.Set<EcobeeSensor> getEcobee_sensor() { return ecobee_sensor; }
+    public void setEcobee_sensor(java.util.Set<EcobeeSensor> ecobee_sensor) { this.ecobee_sensor = ecobee_sensor; }
+    public java.util.Set<ModbusRegister> getModbus_register() { return modbus_register; }
+    public void setModbus_register(java.util.Set<ModbusRegister> modbus_register) { this.modbus_register = modbus_register; }
+    public java.util.Set<SiemensAsset> getSiemens_asset() { return siemens_asset; }
+    public void setSiemens_asset(java.util.Set<SiemensAsset> siemens_asset) { this.siemens_asset = siemens_asset; }
+    public java.util.Set<GaiameshController> getGaiamesh_controller() { return gaiamesh_controller; }
+    public void setGaiamesh_controller(java.util.Set<GaiameshController> gaiamesh_controller) { this.gaiamesh_controller = gaiamesh_controller; }
 }

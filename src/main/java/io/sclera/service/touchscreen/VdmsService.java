@@ -1,4 +1,4 @@
-package io.sclera.service;
+package io.sclera.service.touchscreen;
 
 import io.sclera.utils.StubLog;
 import org.springframework.stereotype.Service;
