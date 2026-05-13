@@ -1,10 +1,11 @@
 package io.sclera.service;
 
-import io.sclera.utils.StubLog;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 /** STUB: replace with remote call to AP-C6 */
 @Service
 public class UserActionLogService {
-    // Methods added on demand by compile loop.
+    public void addUserAction(String username, String asset, String update, String s, String success, String assetInfo, String id) {}
+    public void batchUpdateUserActionLogs(List<UserActionLogDTO> logs) {}
 }

@@ -6,5 +6,9 @@ import org.springframework.stereotype.Service;
 /** STUB: replace with remote call to AP-C1edge */
 @Service
 public class GlobalQrcodeService {
-    // Methods added on demand by compile loop.
+    public Integer getDeviceQrcodeCountByDeviceId(String deviceId) { return 0; }
+
+    public void deleteGlobalQRCodeByLocationId(String locationId) {
+        StubLog.warn("GlobalQrcodeService", "deleteGlobalQRCodeByLocationId", "AP-C1edge");
+    }
 }

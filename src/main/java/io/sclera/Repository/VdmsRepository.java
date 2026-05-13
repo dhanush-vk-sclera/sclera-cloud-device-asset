@@ -1,6 +1,11 @@
 package io.sclera.Repository;
 
+import io.sclera.dto.touchscreen.settings.VdmsDTO;
+import org.springframework.stereotype.Repository;
+
 /** STUB Repository: real impl deferred to Phase 2 */
+@Repository
 public interface VdmsRepository {
-    // Methods added on demand by compile loop.
+    String getCustomerOrgIdByVdmsId(String vdms_id);
+    VdmsDTO getSyncDetailsForADC();
 }

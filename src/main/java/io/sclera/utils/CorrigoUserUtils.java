@@ -4,9 +4,10 @@ import io.sclera.Repository.VdmsRepository;
 import io.sclera.dto.CorrigoConfigurationDTO;
 import io.sclera.dto.CorrigoUserSettingsDTO;
 import io.sclera.service.EssentialService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
@@ -14,8 +15,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Component
-@Slf4j
 public class CorrigoUserUtils {
+    private static final Logger log = LoggerFactory.getLogger(CorrigoUserUtils.class);
 
     // private + volatile allows controlled reset while guaranteeing visibility across threads
     private volatile ConcurrentHashMap<String, CorrigoUserSettingsDTO> corrigo_credentials = new ConcurrentHashMap<>();

@@ -27,7 +27,8 @@ import io.sclera.service.touchscreen.VdmsService;
 import io.sclera.service.touchscreen.assetmapper.AssetMapperService;
 import io.sclera.sockets.SocketService;
 import io.sclera.utils.*;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.commons.io.IOUtils;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.*;
@@ -102,8 +103,9 @@ import static org.apache.poi.ss.util.CellUtil.createCell;
 
 @Service
 @ConfigurationProperties(prefix = "sclera")
-@Slf4j
 public class DeviceService {
+
+    private static final Logger log = LoggerFactory.getLogger(DeviceService.class);
 
     @Autowired
     SocketService socketservice;
@@ -1791,7 +1793,7 @@ public class DeviceService {
                         .stream()
                         .map(RecordChecklist::getInspection_record)
                         .filter(Objects::nonNull)
-                        .filter(record -> !record.getIs_removed())
+                        .filter(record -> !true)
                         .map(InspectionRecord::getId)
                         .collect(Collectors.toSet());
                 finalInspectionrecordIds.addAll(inspectionRecordIds);

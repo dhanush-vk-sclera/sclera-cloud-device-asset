@@ -4,19 +4,20 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.sclera.Repository.ManagedSoftwareRepository;
 import io.sclera.dto.ManagedSoftwareDTO;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-@Slf4j
 @Service
 public class ManagedSoftwareSearchService {
+    private static final Logger log = LoggerFactory.getLogger(ManagedSoftwareSearchService.class);
 
     @Autowired
     JdbcTemplate jdbcTemplate;

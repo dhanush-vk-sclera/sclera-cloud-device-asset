@@ -4,6 +4,8 @@ import java.math.BigInteger;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONArray;
 import io.sclera.Repository.MeasuringInstrumentAttributesRepository;
@@ -12,7 +14,6 @@ import io.sclera.dto.touchscreen.SensorDTO;
 import io.sclera.models.MeasuringInstrument;
 import io.sclera.queryrepository.MeasuringInstrumentsQueryRepository;
 import io.sclera.sockets.SocketService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -27,8 +28,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
 @Service
-@Slf4j
 public class MeasuringInstrumentService {
+    private static final Logger log = LoggerFactory.getLogger(MeasuringInstrumentService.class);
 
     @Autowired
     InstrumentFormula instrumentFormula;

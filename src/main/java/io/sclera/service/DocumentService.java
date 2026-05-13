@@ -9,12 +9,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.sclera.dto.DeviceDTO;
 import io.sclera.utils.AuthenticationUtils;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
 import org.json.JSONException;
@@ -29,9 +30,9 @@ import io.sclera.utils.FileUtils;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Slf4j
 @Service
 public class DocumentService {
+    private static final Logger log = LoggerFactory.getLogger(DocumentService.class);
 
     @Autowired
     DocumentRepository documentRepository;

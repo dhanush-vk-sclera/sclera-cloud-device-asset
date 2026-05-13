@@ -3,13 +3,14 @@ package io.sclera.service;
 import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSON;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.sclera.service.touchscreen.VdmsService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,9 +19,9 @@ import io.sclera.dto.DockerInfoDto;
 import io.sclera.dto.VlanDTO;
 import io.sclera.sockets.SocketService;
 
-@Slf4j
 @Service
 public class SystemInterfaceService {
+    private static final Logger log = LoggerFactory.getLogger(SystemInterfaceService.class);
 	
 	@Autowired
 	SystemInterfaceRepository systemInterfaceRepository;

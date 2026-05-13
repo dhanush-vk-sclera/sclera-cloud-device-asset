@@ -15,6 +15,8 @@ import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONException;
@@ -26,7 +28,6 @@ import io.sclera.Repository.VdmsRepository;
 import io.sclera.dto.LocationDTO;
 import io.sclera.dto.RecordChecklistDTO;
 import io.sclera.dto.touchscreen.settings.VdmsDTO;
-import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -42,9 +43,9 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 
 @Service
-@Slf4j
 @ConfigurationProperties(prefix = "sclera")
 public class FloorService {
+    private static final Logger log = LoggerFactory.getLogger(FloorService.class);
 
     @Autowired
     FloorRepository floorRepository;

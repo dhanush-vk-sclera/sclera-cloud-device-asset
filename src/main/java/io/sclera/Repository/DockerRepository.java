@@ -1,6 +1,13 @@
 package io.sclera.Repository;
 
+import io.sclera.dto.touchscreen.settings.DockerDTO;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
 /** STUB Repository: real impl deferred to Phase 2 */
+@Repository
 public interface DockerRepository {
-    // Methods added on demand by compile loop.
+
+    List<DockerDTO> getAllNetworksByNetworkOrigin(Integer networkOrigin);
 }

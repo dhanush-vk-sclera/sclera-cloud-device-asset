@@ -7,6 +7,8 @@ import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -20,7 +22,6 @@ import io.sclera.models.*;
 import io.sclera.queryrepository.LocationQueryRepository;
 import io.sclera.utils.AuthenticationUtils;
 import io.sclera.utils.Utils;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,8 +34,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 
 @Service
-@Slf4j
 public class LocationService {
+    private static final Logger log = LoggerFactory.getLogger(LocationService.class);
 
     @Autowired
     LocationRepository locationRepository;

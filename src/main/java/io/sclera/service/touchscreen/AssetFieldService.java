@@ -2,15 +2,16 @@ package io.sclera.service.touchscreen;
 
 import io.sclera.Repository.AssetFieldRepository;
 import io.sclera.dto.AssetFieldDTO;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Service
-@Slf4j
 public class AssetFieldService {
+    private static final Logger log = LoggerFactory.getLogger(AssetFieldService.class);
 
     private final AssetFieldRepository assetFieldRepository;
 

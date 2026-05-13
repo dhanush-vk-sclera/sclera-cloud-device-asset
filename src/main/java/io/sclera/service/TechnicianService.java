@@ -6,9 +6,10 @@ import io.sclera.dto.TechnicianAvailabilityDTO;
 import io.sclera.dto.TechnicianCertificateDTO;
 import io.sclera.dto.TechnicianDTO;
 import io.sclera.dto.TechnicianSkillDTO;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
@@ -18,8 +19,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-@Slf4j
 public class TechnicianService {
+    private static final Logger log = LoggerFactory.getLogger(TechnicianService.class);
 
     private final TechnicianRepository technicianRepository;
     private final TechnicianAvailabilityService technicianAvailabilityService;

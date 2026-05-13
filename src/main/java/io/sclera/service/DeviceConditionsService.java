@@ -7,17 +7,18 @@ import io.sclera.dto.DeviceConditionsDTO;
 import io.sclera.dto.DeviceDTO;
 import io.sclera.dto.ScheduledJobDTO;
 import io.sclera.dto.ShareConditionsDTO;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.math.BigInteger;
 import java.util.HashSet;
 import java.util.Set;
 
-@Slf4j
 @Service
 public class DeviceConditionsService {
+    private static final Logger log = LoggerFactory.getLogger(DeviceConditionsService.class);
 
     @Autowired
     DeviceConditionsRepository deviceConditionsRepository;

@@ -13,7 +13,6 @@ import io.sclera.dto.ManagedSoftwareUsersDTO;
 import io.sclera.models.ApplicationUser;
 import io.sclera.models.DeviceSpecification;
 import io.sclera.models.ManagedSoftware;
-import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -25,10 +24,12 @@ import java.io.InputStreamReader;
 import java.math.BigInteger;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Service
-@Slf4j
 public class ManagedSoftwareService {
+    private static final Logger log = LoggerFactory.getLogger(ManagedSoftwareService.class);
 
     ManagedSoftwareRepository managedSoftwareRepository;
     DeviceInstalledAppsService deviceInstalledAppsService;

@@ -7,18 +7,19 @@ import com.fasterxml.uuid.Generators;
 import io.sclera.Repository.DeviceTechnicianAISuggestionRepository;
 import io.sclera.dto.DeviceTechnicianAISuggestionDTO;
 import io.sclera.dto.TechnicianDTO;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-@Slf4j
 
 public class DeviceTechnicianAISuggestionService {
+    private static final Logger log = LoggerFactory.getLogger(DeviceTechnicianAISuggestionService.class);
 
 
     private final DeviceTechnicianAISuggestionRepository deviceTechnicianAISuggestionRepository;

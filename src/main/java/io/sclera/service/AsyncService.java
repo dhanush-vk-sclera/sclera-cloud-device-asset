@@ -7,4 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AsyncService {
     // Methods added on demand by compile loop.
+
+    public void updateVendorByMacAddress(String mac, String vendor) {}
+
 }

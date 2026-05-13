@@ -2,11 +2,12 @@ package io.sclera.service;
 
 import java.math.BigInteger;
 import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONObject;
 import io.sclera.Repository.ScheduledJobRepository;
 import io.sclera.dto.*;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +22,8 @@ import io.sclera.utils.ConditionUtils;
 import javax.servlet.http.HttpServletRequest;
 
 @Service
-@Slf4j
 public class ConditionsService {
+    private static final Logger log = LoggerFactory.getLogger(ConditionsService.class);
 
     @Autowired
     SocketService sockertService;

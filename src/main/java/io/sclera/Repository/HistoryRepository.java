@@ -1,3 +1,6 @@
 package io.sclera.Repository;
 /** STUB Repository: real impl deferred to Phase 2 */
-public interface HistoryRepository {}
+public interface HistoryRepository {
+    void deleteByDeviceId(String deviceId);
+
+}

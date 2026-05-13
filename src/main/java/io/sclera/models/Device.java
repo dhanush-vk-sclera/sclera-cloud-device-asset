@@ -12,6 +12,7 @@ import org.hibernate.annotations.ColumnDefault;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.Set;
 
 
@@ -2967,6 +2968,10 @@ public class Device {
     @javax.persistence.Transient
     private java.util.Set<GlobalInspectionRelation> global_inspection_relation;
 
+    // removed: relation to GlobalChecklistConditions (AP-C4)
+    @javax.persistence.Transient
+    private java.util.Set<GlobalChecklistConditions> global_checklist_conditions;
+
     // removed: relation to DaintreeDevice (AP-C2)
     @javax.persistence.Transient
     private java.util.Set<DaintreeDevice> daintree_device;
@@ -3137,6 +3142,12 @@ public class Device {
     }
 
     // removed: getter/setter for Bucket-D Docker (edge-only)
+    // stub: added back as @Transient for compile compatibility
+    @javax.persistence.Transient
+    private Docker docker;
+
+    public Docker getDocker() { return docker; }
+    public void setDocker(Docker docker) { this.docker = docker; }
 
     public String getParent() {
         return parent;
@@ -4387,6 +4398,8 @@ public class Device {
     
     public java.util.Set<GlobalInspectionRelation> getGlobal_inspection_relation() { return global_inspection_relation; }
     public void setGlobal_inspection_relation(java.util.Set<GlobalInspectionRelation> global_inspection_relation) { this.global_inspection_relation = global_inspection_relation; }
+    public java.util.Set<GlobalChecklistConditions> getGlobal_checklist_conditions() { return global_checklist_conditions; }
+    public void setGlobal_checklist_conditions(java.util.Set<GlobalChecklistConditions> global_checklist_conditions) { this.global_checklist_conditions = global_checklist_conditions; }
     public java.util.Set<DaintreeDevice> getDaintree_device() { return daintree_device; }
     public void setDaintree_device(java.util.Set<DaintreeDevice> daintree_device) { this.daintree_device = daintree_device; }
     public java.util.Set<EcobeeSensor> getEcobee_sensor() { return ecobee_sensor; }
@@ -4397,4 +4410,9 @@ public class Device {
     public void setSiemens_asset(java.util.Set<SiemensAsset> siemens_asset) { this.siemens_asset = siemens_asset; }
     public java.util.Set<GaiameshController> getGaiamesh_controller() { return gaiamesh_controller; }
     public void setGaiamesh_controller(java.util.Set<GaiameshController> gaiamesh_controller) { this.gaiamesh_controller = gaiamesh_controller; }
+
+    public DaintreeDevice getInventory_device() {
+        return new DaintreeDevice();
+    }
+
 }

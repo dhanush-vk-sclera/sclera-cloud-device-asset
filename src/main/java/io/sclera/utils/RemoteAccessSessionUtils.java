@@ -1,15 +1,16 @@
 package io.sclera.utils;
 
 import io.sclera.service.touchscreen.VdmsService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 
-@Slf4j
 @Component
 public class RemoteAccessSessionUtils {
+    private static final Logger log = LoggerFactory.getLogger(RemoteAccessSessionUtils.class);
 
     @Autowired
     private Utils settingsUtils;

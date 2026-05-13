@@ -1,10 +1,11 @@
 package io.sclera.service;
 
-import io.sclera.utils.StubLog;
+import io.sclera.dto.AlertProfileDTO;
 import org.springframework.stereotype.Service;
 
 /** STUB: replace with remote call to AP-C5 */
 @Service
 public class AlertProfileService {
-    // Methods added on demand by compile loop.
+    public AlertProfileDTO getAlertProfileById(String alertProfileId) { return null; }
+    public AlertProfileDTO getAlertProfileDetailsById(String a, String b, String deviceId) { return null; }
 }

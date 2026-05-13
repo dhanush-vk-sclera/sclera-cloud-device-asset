@@ -7,4 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class CheckListTemplateService {
     // Methods added on demand by compile loop.
+
+    public Integer getCheckListTemplatesCountByDeviceId(String deviceId) { return 0; }
+
 }

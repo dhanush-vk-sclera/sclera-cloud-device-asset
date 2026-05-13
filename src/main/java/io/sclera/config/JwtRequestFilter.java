@@ -59,7 +59,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     public void updateLogForVDMSActivity(String email_id) {
         try {
-            userActionLogService.updateLoginActivity(email_id, "access");
+//            userActionLogService.updateLoginActivity(email_id, "access");
         } catch (Exception e) {
             System.out.println(e);
         }
