@@ -28,6 +28,8 @@ public class VdmsClient {
     private static final String PUBSUB_NAME = "pubsub";
 
     private final RestTemplate rest = new RestTemplate();
+    private final String daprBaseUrl = "http://localhost:" +
+        (System.getenv("DAPR_HTTP_PORT") != null ? System.getenv("DAPR_HTTP_PORT") : "3500");
 
     // ── Service invocation ────────────────────────────────────────────────────
 
@@ -81,9 +83,13 @@ public class VdmsClient {
      * Topics consumed by vdms-service:
      *   vdms.update-property-details, vdms.update-customer-org-id,
      *   vdms.set-agent-permission, device.audit
+     *
+     * <p>Best-effort: exceptions are logged and swallowed. Dapr/Redis guarantees at-least-once
+     * delivery once the sidecar accepts the event. Callers that need delivery confirmation
+     * should use synchronous service invocation instead.
      */
     public void publishEvent(String topic, Object payload) {
-        String url = daprBaseUrl() + "/v1.0/publish/" + PUBSUB_NAME + "/" + topic;
+        String url = daprBaseUrl + "/v1.0/publish/" + PUBSUB_NAME + "/" + topic;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Object> request = new HttpEntity<>(payload, headers);
@@ -98,19 +104,10 @@ public class VdmsClient {
     // ── Internal helpers ──────────────────────────────────────────────────────
 
     private <T> T invoke(String vdmsPath, Class<T> responseType) {
-        String url = daprBaseUrl() + "/v1.0/invoke/" + VDMS_APP_ID + "/method/" + vdmsPath;
-        try {
-            log.debug("[VdmsClient] GET {}", url);
-            ResponseEntity<T> response = rest.getForEntity(url, responseType);
-            return response.getBody();
-        } catch (Exception e) {
-            log.error("[VdmsClient] Failed to invoke {}: {}", vdmsPath, e.getMessage());
-            return null;
-        }
+        String url = daprBaseUrl + "/v1.0/invoke/" + VDMS_APP_ID + "/method/" + vdmsPath;
+        log.debug("[VdmsClient] GET {}", url);
+        ResponseEntity<T> response = rest.getForEntity(url, responseType);
+        return response.getBody();
     }
 
-    private String daprBaseUrl() {
-        String port = System.getenv("DAPR_HTTP_PORT");
-        return "http://localhost:" + (port != null ? port : "3500");
-    }
 }
