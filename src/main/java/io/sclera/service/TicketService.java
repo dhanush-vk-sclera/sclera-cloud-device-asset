@@ -13,5 +13,8 @@ public class TicketService {
     public Boolean getOpenTicketStatus(String deviceId) {
         return false;
     }
-    // Methods added on demand by compile loop.
+
+    public void updateTicketAssigneeByUserEmail(String email) {
+        StubLog.warn("TicketService", "updateTicketAssigneeByUserEmail", "AP-C3");
+    }
 }

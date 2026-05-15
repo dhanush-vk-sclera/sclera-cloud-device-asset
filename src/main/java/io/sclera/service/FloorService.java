@@ -328,8 +328,8 @@ public class FloorService {
            Boolean status = apicallService.syncFloorToADC(building_id, Collections.singletonList(floordto),vdmsDetails.getCustomer_org_id(), vdmsDetails.getAdc_configuration_id());
            log.info("Floor synced to ADC server successfully, Floor ID: {}, Status: {}", floordto.getFloor_id(), status);
        }
-      catch (JsonProcessingException e){
-              throw new RuntimeException(e);
+      catch (Exception e){
+              log.error("Error syncing floor to ADC server", e);
        }
     }
 

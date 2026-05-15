@@ -702,7 +702,7 @@ public class Docker {
     @ManyToOne
     private Vendor_Organisation vendor_org;
 
-    @OneToMany(mappedBy = "docker",cascade = CascadeType.ALL)
+    @javax.persistence.Transient
     private Set<Device> device;
 
     @OneToOne
@@ -715,7 +715,7 @@ public class Docker {
     @OneToMany(mappedBy = "docker",cascade = CascadeType.ALL)
     private Set<Bacnet_Device> bacnet_device;
 
-    @OneToMany(mappedBy = "docker", cascade = CascadeType.ALL)
+    @javax.persistence.Transient
     private Set<History> history;
 
     @OneToMany(mappedBy = "docker",cascade = CascadeType.ALL)

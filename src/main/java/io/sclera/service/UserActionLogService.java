@@ -30,6 +30,8 @@ public class UserActionLogService {
             payload.put("status",    status);
             payload.put("message",   message);
             payload.put("deviceId",  recordId  != null ? recordId  : "");
+            log.info("[AuditLog] publishing device.audit | action={} device={} user={} vdmsId={}",
+                     action, recordId, username, payload.get("vdmsId"));
             vdmsClient.publishEvent("device.audit", payload);
         } catch (Exception e) {
             log.warn("[UserActionLogService] Failed to publish audit event action={}: {}", action, e.getMessage());

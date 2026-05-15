@@ -1,11 +1,9 @@
 package io.sclera.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.RequiredArgsConstructor;
 
 import java.math.BigInteger;
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@RequiredArgsConstructor
 public class AssetFieldDTO {
     private String id;
     private String name;

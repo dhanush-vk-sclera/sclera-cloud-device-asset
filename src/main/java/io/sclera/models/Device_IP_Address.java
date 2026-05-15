@@ -8,6 +8,7 @@ import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQueries;
 import javax.persistence.NamedNativeQuery;
 import javax.persistence.SqlResultSetMapping;
 
@@ -29,12 +30,11 @@ import io.sclera.dto.touchscreen.DeviceIPAddressDTO;
 		})
 
 
-@NamedNativeQuery(
-		name = "Device_IP_Address.getIPAddressByDeviceId",
-		query = "SELECT ip_address, ip_conflict_status"
-				+ " FROM device_ip_address"
-				+ " WHERE device_id = ?1",
-				resultSetMapping = "deviceipaddressmapping")
+@NamedNativeQueries({
+    @NamedNativeQuery(name = "Device_IP_Address.getIPAddressByDeviceId", query = "SELECT ip_address, ip_conflict_status FROM device_ip_address WHERE device_id = ?1", resultSetMapping = "deviceipaddressmapping"),
+    @NamedNativeQuery(name = "Device_IP_Address.deleteIPAddressByDeviceId", query = "DELETE FROM device_ip_address WHERE device_id = ?1", resultClass = Device_IP_Address.class),
+    @NamedNativeQuery(name = "Device_IP_Address.insertIPAddressByDeviceId", query = "INSERT INTO device_ip_address (id, ip_address, ip_conflict_status, device_id) VALUES (?1, ?2, ?3, ?4)", resultClass = Device_IP_Address.class)
+})
 
 
 

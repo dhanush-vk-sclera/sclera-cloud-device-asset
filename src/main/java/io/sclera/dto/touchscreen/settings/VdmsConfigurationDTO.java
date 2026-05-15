@@ -1,8 +1,5 @@
 package io.sclera.dto.touchscreen.settings;
 
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
 public class VdmsConfigurationDTO {
 
     private String id;
@@ -18,6 +15,9 @@ public class VdmsConfigurationDTO {
     private String private_ip;
     private String mac_address;
     private String sclera_agent_permission;
+
+    public VdmsConfigurationDTO() {
+    }
 
     public VdmsConfigurationDTO(String id, String interface_id, Integer cidr, String gateway, Boolean isConfigured, Boolean isTagged, Boolean isStatic, String primary_dns, String secondary_dns, Integer vlan_id, String private_ip, String mac_address) {
         this.id = id;

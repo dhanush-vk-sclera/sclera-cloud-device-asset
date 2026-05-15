@@ -8,7 +8,6 @@ import io.sclera.service.UserActionLogService;
 import io.sclera.service.UserService;
 import io.sclera.utils.UserRoleUtils;
 import io.sclera.utils.Utils;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -24,7 +23,7 @@ import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 
 
 @Component
-@RequiredArgsConstructor
+@org.springframework.context.annotation.Profile("!docker")
 public class JwtRequestFilter extends OncePerRequestFilter {
 
 

@@ -22,4 +22,10 @@ public class NfcService {
         StubLog.warn("NfcService", "getNfcsByLocationIds", "AP-C1edge");
         return Collections.emptySet();
     }
+    public void syncAllNfc(String vdmsId) {
+        StubLog.warn("NfcService", "syncAllNfc", "AP-C1edge");
+    }
+    public void syncNfc(String vdmsId) {
+        StubLog.warn("NfcService", "syncNfc", "AP-C1edge");
+    }
 }

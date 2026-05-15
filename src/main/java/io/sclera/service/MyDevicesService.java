@@ -3,6 +3,7 @@ package io.sclera.service;
 import com.alibaba.fastjson.JSONObject;
 import io.sclera.dto.ConditionsDTO;
 import io.sclera.dto.MyDevicesCompanyDTO;
+import io.sclera.dto.MyDevicesSensorAttributesDTO;
 import io.sclera.dto.MyDevicesSensorDTO;
 import io.sclera.dto.touchscreen.SensorDTO;
 import io.sclera.utils.StubLog;
@@ -22,7 +23,9 @@ public class MyDevicesService {
     public void updateMyDevicesEventData(JSONObject myDevicesEventData) {}
     public List<MyDevicesCompanyDTO> getMyDevicesCompanies(String vdmsId, Integer page, Integer size) { return Collections.emptyList(); }
     public List<MyDevicesSensorDTO> getMyDevicesSensors(String vdmsId, String companyId, Integer page, Integer size) { return Collections.emptyList(); }
-    public void deleteMyDevicesCompany(String id) {}
+    public void deleteMyDevicesCompany(String username, String vdmsid, String id) {
+        StubLog.warn("MyDevicesService", "deleteMyDevicesCompany", "AP-C3");
+    }
     public void deleteMyDevicesSensor(String id) {}
 
     public String getDeviceIdByMyDevicesSensorId(String sensorId) {
@@ -51,5 +54,46 @@ public class MyDevicesService {
     }
     public void updateMyDevicesSensorDeviceId(String oldDeviceId, String newDeviceId, Set<String> sensorIds) {
         StubLog.warn("MyDevicesService", "updateMyDevicesSensorDeviceId", "AP-C3");
+    }
+
+    // Missing methods called from MyDevicesController
+    public List<MyDevicesCompanyDTO> getAllMyDevicesCompanies(String username, String vdmsId) {
+        StubLog.warn("MyDevicesService", "getAllMyDevicesCompanies", "AP-C3");
+        return Collections.emptyList();
+    }
+    public Set<MyDevicesCompanyDTO> getMyDevicesCompaniesPagination(String username, String vdmsId, String searchkey, Integer pageno, Integer pagesize) {
+        StubLog.warn("MyDevicesService", "getMyDevicesCompaniesPagination", "AP-C3");
+        return Collections.emptySet();
+    }
+    public MyDevicesSensorDTO getMyDevicesSensor(String username, String vdmsId, String sensorId) {
+        StubLog.warn("MyDevicesService", "getMyDevicesSensor", "AP-C3");
+        return null;
+    }
+    public void updateMyDevicesSensors(String username, String vdmsId, List<MyDevicesSensorDTO> sensors) {
+        StubLog.warn("MyDevicesService", "updateMyDevicesSensors", "AP-C3");
+    }
+    public void deleteMyDevicesSensors(String username, String vdmsId, List<MyDevicesSensorDTO> sensors) {
+        StubLog.warn("MyDevicesService", "deleteMyDevicesSensors", "AP-C3");
+    }
+    public void updateDeviceMyDevicesSensors(String username, String vdmsId, List<MyDevicesSensorDTO> sensors) {
+        StubLog.warn("MyDevicesService", "updateDeviceMyDevicesSensors", "AP-C3");
+    }
+    public void deleteDeviceMyDevicesSensors(String username, String vdmsId, List<MyDevicesSensorDTO> sensors) {
+        StubLog.warn("MyDevicesService", "deleteDeviceMyDevicesSensors", "AP-C3");
+    }
+    public List<MyDevicesSensorDTO> getAllMyDevicesSensors(String username, String vdmsId) {
+        StubLog.warn("MyDevicesService", "getAllMyDevicesSensors", "AP-C3");
+        return Collections.emptyList();
+    }
+    public List<MyDevicesSensorDTO> getAllMyDevicesSensorsByPagination(String username, String vdmsId, String searchkey, Integer pageno, Integer pagesize) {
+        StubLog.warn("MyDevicesService", "getAllMyDevicesSensorsByPagination", "AP-C3");
+        return Collections.emptyList();
+    }
+    public Set<MyDevicesSensorDTO> getMyDevicesSensorsByPagination(String username, String vdmsId, String companyId, String searchkey, Integer pageno, Integer pagesize) {
+        StubLog.warn("MyDevicesService", "getMyDevicesSensorsByPagination", "AP-C3");
+        return Collections.emptySet();
+    }
+    public void updateMyDevicesSensorAttributes(String username, String vdmsId, List<MyDevicesSensorAttributesDTO> attrs) {
+        StubLog.warn("MyDevicesService", "updateMyDevicesSensorAttributes", "AP-C3");
     }
 }

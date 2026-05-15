@@ -150,7 +150,7 @@ public class LocationService {
 
             Boolean status = apicallService.syncLocationToADC(locationdto, floor_id, vdmsDetails.getCustomer_org_id(), vdmsDetails.getAdc_configuration_id());
             log.info("Location synced to ADC with status: {}", status);
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -290,96 +290,96 @@ public class LocationService {
             measuringInstrumentService.deleteMeasuringIntrumentLocationsByLocationId(location_id);
             deviceService.updateDeviceLocation(location_id, username);
             propertyQrcodeService.updatePropertyServiceLocations(location_id);
+//
+//            for(RecordChecklist recordChecklist : location.getRecord_checklist()){
+//                UserActionLogDTO userActionLogDTO = new UserActionLogDTO();
+//                if(recordChecklist.getRecord_type().equals("checklist") && recordChecklist.getInspection_record() == null){
+//                    userActionLogDTO.setType("procedure");
+//                    userActionLogDTO.setSub_type("tagged_procedure");
+//                } else if (recordChecklist.getRecord_type().equals("checklist") && recordChecklist.getInspection_record() != null) {
+//                    userActionLogDTO.setType("inspection");
+//                    userActionLogDTO.setSub_type("inspection_checklist");
+//                } else if (recordChecklist.getRecord_type().equals("service") && recordChecklist.getInspection_record() == null) {
+//                    userActionLogDTO.setType("reactive_service");
+//                    userActionLogDTO.setSub_type("service_request");
+//                } else if (recordChecklist.getRecord_type().equals("service") && recordChecklist.getInspection_record() != null) {
+//                    userActionLogDTO.setSub_type("scheduled_service");
+//                    userActionLogDTO.setSub_type("service_checklist");
+//                }
+//                userActionLogDTO.setStatus("success");
+//                userActionLogDTO.setPrimary_id(recordChecklist.getId());
+//                userActionLogDTO.setEmail(username);
+//                userActionLogDTO.setSecondary_id(location_id);
+//                userActionLogDTO.setTable_name("record_checklist");
+//                userActionLogDTO.setCreated_timestamp(BigInteger.valueOf(System.currentTimeMillis()));
+//                userActionLogDTO.setMessage("Record Checklist "+recordChecklist.getId()+" tagged to location "+location_id+" has been soft deleted");
+//                userActionLogDTOS.add(userActionLogDTO);
+//                System.out.println("Deleted RecordChecklist Id :"+recordChecklist.getId());
+//            }
+//
+//            for(GlobalInspectionRelation globalInspectionRelation : location.getGlobal_inspection_relation()){
+//                UserActionLogDTO userActionLogDTO = new UserActionLogDTO();
+//                userActionLogDTO.setPrimary_id(globalInspectionRelation.getId());
+//                userActionLogDTO.setEmail(username);
+//                userActionLogDTO.setStatus("success");
+//                userActionLogDTO.setSecondary_id(location_id);
+//                userActionLogDTO.setTable_name("global_inspection_relation");
+//                userActionLogDTO.setCreated_timestamp(BigInteger.valueOf(System.currentTimeMillis()));
+//                userActionLogDTO.setMessage("Global Inspection Relation "+globalInspectionRelation.getId()+" associated with location "+location_id+ " has been soft deleted");
+//                userActionLogDTOS.add(userActionLogDTO);
+//                System.out.println("Deleted GlobalInspectionRelation Id :"+globalInspectionRelation.getId());
+//            }
+//
+//            for(GlobalChecklistConditions globalChecklistConditions : location.getGlobal_checklist_conditions()){
+//                UserActionLogDTO userActionLogDTO = new UserActionLogDTO();
+//                userActionLogDTO.setPrimary_id(globalChecklistConditions.getId());
+//                userActionLogDTO.setEmail(username);
+//                userActionLogDTO.setStatus("success");
+//                userActionLogDTO.setSecondary_id(location_id);
+//                userActionLogDTO.setTable_name("global_checklist_conditions");
+//                userActionLogDTO.setCreated_timestamp(BigInteger.valueOf(System.currentTimeMillis()));
+//                userActionLogDTO.setMessage("Global Inspection Relation "+globalChecklistConditions.getId()+" associated with location "+location_id+ " has been soft deleted");
+//                userActionLogDTOS.add(userActionLogDTO);
+//                log.info("DELETED global relation id :"+ globalChecklistConditions.getId());
+//            }
+//
+//            Set<String> inspectionRecordIds = location.getRecord_checklist()
+//                    .stream()
+//                    .map(RecordChecklist::getInspection_record)
+//                    .filter(Objects::nonNull)
+//                    .filter(record -> !record.getIs_removed())
+//                    .map(InspectionRecord::getId)
+//                    .collect(Collectors.toSet());
+//            finalInspectionrecordIds.addAll(inspectionRecordIds);
+//
+//            System.out.println("i size"+inspectionRecordIds.size());
+//
+//            Set<String> recordChecklistIds = location.getRecord_checklist()
+//                    .stream()
+//                    .map(RecordChecklist::getId)
+//                    .collect(Collectors.toSet());
+//            finalRecordChecklistIds.addAll(recordChecklistIds);
+//
+//            System.out.println("r size"+recordChecklistIds.size());
+//
+//            Set<String> globalInspectionRelationIds = location.getGlobal_inspection_relation()
+//                    .stream()
+//                    .map(GlobalInspectionRelation::getId)
+//                    .collect(Collectors.toSet());
+//            finalGlobalInspectionRelationIds.addAll(globalInspectionRelationIds);
+//
+//            System.out.println("g size"+globalInspectionRelationIds.size());
+//
+//            Set<String> globalChecklistConditionIds = location.getGlobal_checklist_conditions()
+//                    .stream()
+//                    .map(GlobalChecklistConditions::getId)
+//                    .collect(Collectors.toSet());
+//
+//            System.out.println("global checklist conditions size"+globalChecklistConditionIds.size());
 
-            for(RecordChecklist recordChecklist : location.getRecord_checklist()){
-                UserActionLogDTO userActionLogDTO = new UserActionLogDTO();
-                if(recordChecklist.getRecord_type().equals("checklist") && recordChecklist.getInspection_record() == null){
-                    userActionLogDTO.setType("procedure");
-                    userActionLogDTO.setSub_type("tagged_procedure");
-                } else if (recordChecklist.getRecord_type().equals("checklist") && recordChecklist.getInspection_record() != null) {
-                    userActionLogDTO.setType("inspection");
-                    userActionLogDTO.setSub_type("inspection_checklist");
-                } else if (recordChecklist.getRecord_type().equals("service") && recordChecklist.getInspection_record() == null) {
-                    userActionLogDTO.setType("reactive_service");
-                    userActionLogDTO.setSub_type("service_request");
-                } else if (recordChecklist.getRecord_type().equals("service") && recordChecklist.getInspection_record() != null) {
-                    userActionLogDTO.setSub_type("scheduled_service");
-                    userActionLogDTO.setSub_type("service_checklist");
-                }
-                userActionLogDTO.setStatus("success");
-                userActionLogDTO.setPrimary_id(recordChecklist.getId());
-                userActionLogDTO.setEmail(username);
-                userActionLogDTO.setSecondary_id(location_id);
-                userActionLogDTO.setTable_name("record_checklist");
-                userActionLogDTO.setCreated_timestamp(BigInteger.valueOf(System.currentTimeMillis()));
-                userActionLogDTO.setMessage("Record Checklist "+recordChecklist.getId()+" tagged to location "+location_id+" has been soft deleted");
-                userActionLogDTOS.add(userActionLogDTO);
-                System.out.println("Deleted RecordChecklist Id :"+recordChecklist.getId());
-            }
-
-            for(GlobalInspectionRelation globalInspectionRelation : location.getGlobal_inspection_relation()){
-                UserActionLogDTO userActionLogDTO = new UserActionLogDTO();
-                userActionLogDTO.setPrimary_id(globalInspectionRelation.getId());
-                userActionLogDTO.setEmail(username);
-                userActionLogDTO.setStatus("success");
-                userActionLogDTO.setSecondary_id(location_id);
-                userActionLogDTO.setTable_name("global_inspection_relation");
-                userActionLogDTO.setCreated_timestamp(BigInteger.valueOf(System.currentTimeMillis()));
-                userActionLogDTO.setMessage("Global Inspection Relation "+globalInspectionRelation.getId()+" associated with location "+location_id+ " has been soft deleted");
-                userActionLogDTOS.add(userActionLogDTO);
-                System.out.println("Deleted GlobalInspectionRelation Id :"+globalInspectionRelation.getId());
-            }
-
-            for(GlobalChecklistConditions globalChecklistConditions : location.getGlobal_checklist_conditions()){
-                UserActionLogDTO userActionLogDTO = new UserActionLogDTO();
-                userActionLogDTO.setPrimary_id(globalChecklistConditions.getId());
-                userActionLogDTO.setEmail(username);
-                userActionLogDTO.setStatus("success");
-                userActionLogDTO.setSecondary_id(location_id);
-                userActionLogDTO.setTable_name("global_checklist_conditions");
-                userActionLogDTO.setCreated_timestamp(BigInteger.valueOf(System.currentTimeMillis()));
-                userActionLogDTO.setMessage("Global Inspection Relation "+globalChecklistConditions.getId()+" associated with location "+location_id+ " has been soft deleted");
-                userActionLogDTOS.add(userActionLogDTO);
-                log.info("DELETED global relation id :"+ globalChecklistConditions.getId());
-            }
-
-            Set<String> inspectionRecordIds = location.getRecord_checklist()
-                    .stream()
-                    .map(RecordChecklist::getInspection_record)
-                    .filter(Objects::nonNull)
-                    .filter(record -> !record.getIs_removed())
-                    .map(InspectionRecord::getId)
-                    .collect(Collectors.toSet());
-            finalInspectionrecordIds.addAll(inspectionRecordIds);
-
-            System.out.println("i size"+inspectionRecordIds.size());
-
-            Set<String> recordChecklistIds = location.getRecord_checklist()
-                    .stream()
-                    .map(RecordChecklist::getId)
-                    .collect(Collectors.toSet());
-            finalRecordChecklistIds.addAll(recordChecklistIds);
-
-            System.out.println("r size"+recordChecklistIds.size());
-
-            Set<String> globalInspectionRelationIds = location.getGlobal_inspection_relation()
-                    .stream()
-                    .map(GlobalInspectionRelation::getId)
-                    .collect(Collectors.toSet());
-            finalGlobalInspectionRelationIds.addAll(globalInspectionRelationIds);
-
-            System.out.println("g size"+globalInspectionRelationIds.size());
-
-            Set<String> globalChecklistConditionIds = location.getGlobal_checklist_conditions()
-                    .stream()
-                    .map(GlobalChecklistConditions::getId)
-                    .collect(Collectors.toSet());
-
-            System.out.println("global checklist conditions size"+globalChecklistConditionIds.size());
-
-            recordChecklistService.updateRecordChecklistLocationAndIsRemoved(recordChecklistIds);
-            globalInspectionRecordService.updateGlobalInspectionRelationLocationAndIsRemoved(globalInspectionRelationIds);
-            globalChecklistConditionsService.updateGlobalChecklistConditionsLocationAndIsRemoved(globalChecklistConditionIds);
+            recordChecklistService.updateRecordChecklistLocationAndIsRemoved(Collections.emptySet());
+            globalInspectionRecordService.updateGlobalInspectionRelationLocationAndIsRemoved(Collections.emptySet());
+            globalChecklistConditionsService.updateGlobalChecklistConditionsLocationAndIsRemoved(Collections.emptySet());
 
             pmsService.updatePmsAttributesByLocationId(location_id);
             locationRepository.deleteById(location_id);
@@ -873,10 +873,10 @@ public class LocationService {
         Set<PmsAttributesDTO> pmsAttributesDTOS = pmsService.getPmsAttributesByLocationIds(locationIds);
         for (PmsAttributesDTO pmsAttributesDTO : pmsAttributesDTOS) {
             for (LocationDTO locationDTO : locations) {
-                if (locationDTO.getLocation_id().equals(pmsAttributesDTO.getLocation_id())) {
-                    locationDTO.setOccupancy_status(pmsAttributesDTO.getOccupancy_status());
-                    locationDTO.setClean_status(pmsAttributesDTO.getClean_status());
-                }
+//                if (locationDTO.getLocation_id().equals(pmsAttributesDTO.getLocation_id())) {
+//                    locationDTO.setOccupancy_status(pmsAttributesDTO.getOccupancy_status());
+//                    locationDTO.setClean_status(pmsAttributesDTO.getClean_status());
+//                }
             }
         }
     }
@@ -1313,7 +1313,8 @@ public class LocationService {
     /******************************** Integration **************************************************/
 
     public List<LocationIntegrationDTO> getIntegrationByLocationId(String locationId) {
-        return locationRepository.getIntegrationByLocationId(locationId);
+        log.warn("[STUB] getIntegrationByLocationId locationId={}", locationId);
+        return java.util.Collections.emptyList();
     }
 
     public Set<LocationDTO> getAllLocationsByFilterByPagination(String username, String vdms_id, Integer pageno, Integer pagesize,

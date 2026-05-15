@@ -14,4 +14,10 @@ public class ClientNfcService {
         StubLog.warn("ClientNfcService", "getLocationIdsTaggedToClientNfc", "AP-C1edge");
         return new JSONArray();
     }
+    public void syncAllClientNfc(String vdmsId) {
+        StubLog.warn("ClientNfcService", "syncAllClientNfc", "AP-C1edge");
+    }
+    public void syncClientNfc(String vdmsId) {
+        StubLog.warn("ClientNfcService", "syncClientNfc", "AP-C1edge");
+    }
 }

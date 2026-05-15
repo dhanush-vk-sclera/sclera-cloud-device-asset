@@ -1,4 +1,4 @@
-﻿FROM eclipse-temurin:11-jre
+﻿FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 COPY target/sclera.jar app.jar
 EXPOSE 8085

@@ -16,6 +16,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.sclera.dto.DeviceDTO;
 import io.sclera.utils.AuthenticationUtils;
+import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.encryption.AccessPermission;
 import org.json.JSONException;
@@ -115,7 +116,7 @@ public class DocumentService {
                     PDDocument pdfDocument = null;
                     try {
                         // Attempts to load the file without a password; if it fails, it means the file is password-protected.
-                        pdfDocument = PDDocument.load(input);
+                        pdfDocument = Loader.loadPDF(input.readAllBytes());
                         AccessPermission permissions = pdfDocument.getCurrentAccessPermission();
                         boolean hasRestrictions =
                                 !permissions.canAssembleDocument() ||
@@ -124,8 +125,7 @@ public class DocumentService {
                                         !permissions.canExtractContent() ||
                                         !permissions.canModifyAnnotations() ||
                                         !permissions.canFillInForm() ||
-                                        !permissions.canExtractForAccessibility() ||
-                                        !permissions.canPrintDegraded();
+                                        !permissions.canExtractForAccessibility();
                         if (pdfDocument.isEncrypted() || hasRestrictions) {
                             //no password only has permission restriction
                             encryptedType = 1;

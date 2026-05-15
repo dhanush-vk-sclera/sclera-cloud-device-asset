@@ -1,4 +1,4 @@
-package io.sclera.dti;
+package io.sclera.dto;
 
 public class DaintreeConfigurationDTO {
 }

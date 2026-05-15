@@ -55,7 +55,11 @@ public class RecordChecklistService {
     public void deleteRecordChecklistByLocationId(String locationId) {
         StubLog.warn("RecordChecklistService", "deleteRecordChecklistByLocationId", "AP-C4");
     }
-    public void deleteAllRecordChecklistByLocationId(String locationId) {
+    public List<String> deleteAllRecordChecklistByLocationId(String locationId) {
         StubLog.warn("RecordChecklistService", "deleteAllRecordChecklistByLocationId", "AP-C4");
+        return null;
+    }
+    public void updateRecordChecklist(String email) {
+        StubLog.warn("RecordChecklistService", "updateRecordChecklist", "AP-C4");
     }
 }

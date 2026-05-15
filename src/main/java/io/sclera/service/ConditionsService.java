@@ -2,12 +2,12 @@ package io.sclera.service;
 
 import java.math.BigInteger;
 import java.util.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import com.alibaba.fastjson.JSONObject;
 import io.sclera.Repository.ScheduledJobRepository;
 import io.sclera.dto.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +23,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Service
 public class ConditionsService {
+
     private static final Logger log = LoggerFactory.getLogger(ConditionsService.class);
 
     @Autowired
@@ -924,10 +925,10 @@ public class ConditionsService {
                 System.out.println("inside old and new " + oldAlert + "      " + newAlert);
                 if (oldAlert != newAlert) {
                     System.out.println("inside old and new mismatch " + newAlert);
-                    bacnetService.updateBacnetObjectAlert(bacnet_device_id, bacnet_object_id, newAlert);
+//                    bacnetService.updateBacnetObjectAlert(bacnet_device_id, bacnet_object_id, newAlert);
 
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
@@ -942,10 +943,10 @@ public class ConditionsService {
                     }
                 } else {
                     if (conditionType.equals("delete")) {
-                        bacnetService.updateBacnetObjectAlert(bacnet_device_id, bacnet_object_id, newAlert);
+//                        bacnetService.updateBacnetObjectAlert(bacnet_device_id, bacnet_object_id, newAlert);
                     }
                 }
-                bacnetService.updateBacnetObjectUserDataValue(bacnet_device_id, bacnet_object_id, user_data_value);
+//                bacnetService.updateBacnetObjectUserDataValue(bacnet_device_id, bacnet_object_id, user_data_value);
 
                 //update device bacnet status
                 deviceService.updateDeviceBacnetStatus(bacnet_device_id, bacnet_object_id);
@@ -953,10 +954,10 @@ public class ConditionsService {
             }
             case "lorawan": {
                 if (oldAlert != newAlert) {
-                    lorawanService.updateLorawanSensorAttributesAlert(lorawan_sensor_id, lorawan_sensor_attributes_name, newAlert);
+//                    lorawanService.updateLorawanSensorAttributesAlert(lorawan_sensor_id, lorawan_sensor_attributes_name, newAlert);
 
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
@@ -970,13 +971,13 @@ public class ConditionsService {
                     }
                 } else {
                     if (conditionType.equals("delete")) {
-                        lorawanService.updateLorawanSensorAttributesAlert(lorawan_sensor_id, lorawan_sensor_attributes_name, newAlert);
+//                        lorawanService.updateLorawanSensorAttributesAlert(lorawan_sensor_id, lorawan_sensor_attributes_name, newAlert);
                     }
                 }
-                lorawanService.updateLorawanSensorAttributesUserDataValue(lorawan_sensor_id, lorawan_sensor_attributes_name, user_data_value);
+//                lorawanService.updateLorawanSensorAttributesUserDataValue(lorawan_sensor_id, lorawan_sensor_attributes_name, user_data_value);
 
                 //update lorawan sensor alert
-                lorawanService.updateLorawanSensorAlert(lorawan_sensor_id);
+//                lorawanService.updateLorawanSensorAlert(lorawan_sensor_id);
 
                 //update device lorawan status
                 deviceService.updateDeviceLorawanStatus(lorawan_sensor_id);
@@ -984,17 +985,17 @@ public class ConditionsService {
             }
             case "snmp": {
                 if (oldAlert != newAlert) {
-                    snmpService.updateSnmpDeviceAlert(snmp_device_id, newAlert);
+//                    snmpService.updateSnmpDeviceAlert(snmp_device_id, newAlert);
                     //					if(newAlert){
                     //						//insert snmp alert into history
                     //						historyService.insertSnmpAlertHistory(snmp_device_id, value, user_data_value, alert_message);
                     //					}
                 } else {
                     if (conditionType.equals("delete")) {
-                        snmpService.updateSnmpDeviceAlert(snmp_device_id, newAlert);
+//                        snmpService.updateSnmpDeviceAlert(snmp_device_id, newAlert);
                     }
                 }
-                snmpService.updateSnmpDeviceUserDataValue(snmp_device_id, user_data_value);
+//                snmpService.updateSnmpDeviceUserDataValue(snmp_device_id, user_data_value);
 
                 //update device snmp status
                 deviceService.updateDeviceSnmpStatus(snmp_device_id);
@@ -1002,10 +1003,10 @@ public class ConditionsService {
             }
             case "disruptive": {
                 if (oldAlert != newAlert) {
-                    disruptiveService.updateDisruptiveSensorAlert(disruptive_sensor_id, newAlert);
+//                    disruptiveService.updateDisruptiveSensorAlert(disruptive_sensor_id, newAlert);
 
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
@@ -1020,10 +1021,10 @@ public class ConditionsService {
                     }
                 } else {
                     if (conditionType.equals("delete")) {
-                        disruptiveService.updateDisruptiveSensorAlert(disruptive_sensor_id, newAlert);
+//                        disruptiveService.updateDisruptiveSensorAlert(disruptive_sensor_id, newAlert);
                     }
                 }
-                disruptiveService.updateDisruptiveSensorUserDataValue(disruptive_sensor_id, user_data_value);
+//                disruptiveService.updateDisruptiveSensorUserDataValue(disruptive_sensor_id, user_data_value);
 
                 //update device disruptive status
                 deviceService.updateDeviceDisruptiveStatus(disruptive_sensor_id);
@@ -1031,10 +1032,10 @@ public class ConditionsService {
             }
             case "my_devices": {
                 if (oldAlert != newAlert) {
-                    myDeviceService.updateMyDevicesSensorAttributesAlert(my_devices_sensor_id, my_devices_sensor_attributes_name, newAlert);
+//                    myDeviceService.updateMyDevicesSensorAttributesAlert(my_devices_sensor_id, my_devices_sensor_attributes_name, newAlert);
 
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
@@ -1049,22 +1050,22 @@ public class ConditionsService {
                     }
                 } else {
                     if (conditionType.equals("delete")) {
-                        myDeviceService.updateMyDevicesSensorAttributesAlert(my_devices_sensor_id, my_devices_sensor_attributes_name, newAlert);
+//                        myDeviceService.updateMyDevicesSensorAttributesAlert(my_devices_sensor_id, my_devices_sensor_attributes_name, newAlert);
                     }
                 }
 
-                myDeviceService.updateMyDevicesSensorAttributesUserDataValue(my_devices_sensor_id, my_devices_sensor_attributes_name, user_data_value);
-                myDeviceService.updateMyDevicesSensorAlert(my_devices_sensor_id);
+//                myDeviceService.updateMyDevicesSensorAttributesUserDataValue(my_devices_sensor_id, my_devices_sensor_attributes_name, user_data_value);
+//                myDeviceService.updateMyDevicesSensorAlert(my_devices_sensor_id);
                 //update device my devices status
                 deviceService.updateDeviceMyDevicesStatus(my_devices_sensor_id);
                 break;
             }
             case "monnit": {
                 if (oldAlert != newAlert) {
-                    monnitService.updateMonnitSensorAlert(monnit_sensor_id, newAlert);
+//                    monnitService.updateMonnitSensorAlert(monnit_sensor_id, newAlert);
 
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         System.out.println("Error updating monnit sensor alert count " + e);
                         System.out.println(e);
@@ -1080,11 +1081,11 @@ public class ConditionsService {
                     }
                 } else {
                     if (conditionType.equals("delete")) {
-                        monnitService.updateMonnitSensorAlert(monnit_sensor_id, newAlert);
+//                        monnitService.updateMonnitSensorAlert(monnit_sensor_id, newAlert);
                     }
 
                 }
-                monnitService.updateMonnitSensorUserDataValue(monnit_sensor_id, user_data_value);
+//                monnitService.updateMonnitSensorUserDataValue(monnit_sensor_id, user_data_value);
 
                 //update device disruptive status
                 deviceService.updateDeviceMonnitStatus(monnit_sensor_id);
@@ -1093,10 +1094,10 @@ public class ConditionsService {
             case "pelican": {
 
                 if (oldAlert != newAlert) {
-                    pelicanService.updatePelicanSensorAttributesAlert(pelican_sensor_id, pelican_sensor_attributes_name, newAlert);
+//                    pelicanService.updatePelicanSensorAttributesAlert(pelican_sensor_id, pelican_sensor_attributes_name, newAlert);
 
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
@@ -1112,12 +1113,12 @@ public class ConditionsService {
                     }
                 } else {
                     if (conditionType.equals("delete")) {
-                        pelicanService.updatePelicanSensorAttributesAlert(pelican_sensor_id, pelican_sensor_attributes_name, newAlert);
+//                        pelicanService.updatePelicanSensorAttributesAlert(pelican_sensor_id, pelican_sensor_attributes_name, newAlert);
                     }
                 }
 
-                pelicanService.updatePelicanSensorAttributesUserDataValue(pelican_sensor_id, pelican_sensor_attributes_name, user_data_value);
-                pelicanService.updatePelicanSensorAlert(pelican_sensor_id);
+//                pelicanService.updatePelicanSensorAttributesUserDataValue(pelican_sensor_id, pelican_sensor_attributes_name, user_data_value);
+//                pelicanService.updatePelicanSensorAlert(pelican_sensor_id);
 
                 //update device pelican status
                 deviceService.updateDevicePelicanStatus(pelican_sensor_id);
@@ -1126,10 +1127,10 @@ public class ConditionsService {
             case "knx": {
 
                 if (oldAlert != newAlert) {
-                    knxService.updateKNXGroupAlert(knx_group_address, knx_device_address, newAlert);
+//                    knxService.updateKNXGroupAlert(knx_group_address, knx_device_address, newAlert);
 
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
@@ -1144,11 +1145,11 @@ public class ConditionsService {
                     }
                 } else {
                     if (conditionType.equals("delete")) {
-                        knxService.updateKNXGroupAlert(knx_group_address, knx_device_address, newAlert);
+//                        knxService.updateKNXGroupAlert(knx_group_address, knx_device_address, newAlert);
                     }
                 }
 
-                knxService.updateKNXGroupUserDataValue(knx_device_address, knx_group_address, user_data_value);
+//                knxService.updateKNXGroupUserDataValue(knx_device_address, knx_group_address, user_data_value);
 
                 //update device knx status
                 deviceService.updateDeviceKNXStatus(knx_device_address, knx_group_address);
@@ -1159,10 +1160,10 @@ public class ConditionsService {
 
                 if (oldAlert != newAlert) {
 
-                    snmpService.updateSnmpObjectAlert(snmp_device_configuration_id, snmp_object_oid, newAlert);
+//                    snmpService.updateSnmpObjectAlert(snmp_device_configuration_id, snmp_object_oid, newAlert);
 
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
@@ -1176,11 +1177,11 @@ public class ConditionsService {
                     }
                 } else {
                     if (conditionType.equals("delete")) {
-                        snmpService.updateSnmpObjectAlert(snmp_device_configuration_id, snmp_object_oid, newAlert);
+//                        snmpService.updateSnmpObjectAlert(snmp_device_configuration_id, snmp_object_oid, newAlert);
                     }
                 }
 
-                snmpService.updateSnmpObjectUserDataValue(snmp_device_configuration_id, snmp_object_oid, user_data_value);
+//                snmpService.updateSnmpObjectUserDataValue(snmp_device_configuration_id, snmp_object_oid, user_data_value);
 
                 //update device snmp status
                 deviceService.updateDeviceSnmpObjectStatus(snmp_device_configuration_id, snmp_object_oid);
@@ -1192,7 +1193,7 @@ public class ConditionsService {
                     measuringInstrumentService.updateMeasuringInstrumentSensorAlert(measuring_instrument_id, newAlert);
 
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         System.out.println("Error updating measuring_instrument sensor alert count " + e);
                         System.out.println(e);
@@ -1222,9 +1223,9 @@ public class ConditionsService {
                 if (oldAlert != newAlert) {
 
                     System.out.println("old = " + oldAlert + " new = " + newAlert);
-                    daintreeService.updateDaintreeAlert(daintree_device_id, daintree_point_id, newAlert);
+//                    daintreeService.updateDaintreeAlert(daintree_device_id, daintree_point_id, newAlert);
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
@@ -1239,27 +1240,27 @@ public class ConditionsService {
                     }
                 } else {
                     if (conditionType.equals("delete")) {
-                        daintreeService.updateDaintreeAlert(daintree_device_id, daintree_point_id, newAlert);
+//                        daintreeService.updateDaintreeAlert(daintree_device_id, daintree_point_id, newAlert);
                     }
                 }
 
-                daintreeService.updateDaintreeUserDataValue(daintree_device_id, daintree_point_id, user_data_value);
+//                daintreeService.updateDaintreeUserDataValue(daintree_device_id, daintree_point_id, user_data_value);
                 //update device disruptive status
-                daintreeService.updateDaintreeDeviceAlert(daintree_device_id);
+//                daintreeService.updateDaintreeDeviceAlert(daintree_device_id);
                 deviceService.updateDeviceDainTreeStatus(daintree_device_id);
                 break;
             }
             case "ecobee": {
                 if (oldAlert != newAlert) {
-                    ecobeeService.updateEcobeeSensorAttributesAlert(ecobee_sensor_id, ecobee_sensor_attributes_name, newAlert);
+//                    ecobeeService.updateEcobeeSensorAttributesAlert(ecobee_sensor_id, ecobee_sensor_attributes_name, newAlert);
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
                     if (newAlert) {
                         try {
-                            this.sendEcobeeAlertInfo(ecobee_sensor_id, ecobee_sensor_attributes_name, alert_message);
+//                            this.sendEcobeeAlertInfo(ecobee_sensor_id, ecobee_sensor_attributes_name, alert_message);
                         } catch (Exception e) {
                             System.out.println("Error sending ecobee alert info " + e);
                             System.out.println(e);
@@ -1268,11 +1269,11 @@ public class ConditionsService {
                 } else {
 
                     if (conditionType.equals("delete")) {
-                        ecobeeService.updateEcobeeSensorAttributesAlert(ecobee_sensor_id, ecobee_sensor_attributes_name, newAlert);
+//                        ecobeeService.updateEcobeeSensorAttributesAlert(ecobee_sensor_id, ecobee_sensor_attributes_name, newAlert);
                     }
                 }
-                ecobeeService.updateEcobeeSensorAttributesUserDataValue(ecobee_sensor_id, ecobee_sensor_attributes_name, user_data_value);
-                ecobeeService.updateEcobeeSensorAlert(ecobee_sensor_id);
+//                ecobeeService.updateEcobeeSensorAttributesUserDataValue(ecobee_sensor_id, ecobee_sensor_attributes_name, user_data_value);
+//                ecobeeService.updateEcobeeSensorAlert(ecobee_sensor_id);
 
                 //update device ecobee status
                 deviceService.updateDeviceEcobeeStatus(ecobee_sensor_id);
@@ -1282,16 +1283,16 @@ public class ConditionsService {
                 System.out.println("inside old and new " + oldAlert + "      " + newAlert);
                 if (oldAlert != newAlert) {
                     System.out.println("inside old and new mismatch " + newAlert);
-                    modbusService.updateModbusRegisterAlert(modbus_register_id, newAlert);
+//                    modbusService.updateModbusRegisterAlert(modbus_register_id, newAlert);
 
                     try {
-                        sockertService.sockertSensorAlertCount();
+//                        sockertService.sockertSensorAlertCount();
                     } catch (Exception e) {
                         // TODO: handle exception
                     }
                     if (newAlert) {
                         try {
-                            this.sendModbusAlertInfo(modbus_register_id, alert_message);//working on this
+//                            this.sendModbusAlertInfo(modbus_register_id, alert_message);//working on this
 
                         } catch (Exception e) {
                             System.out.println("Error sending modbus alert info " + e);
@@ -1300,10 +1301,10 @@ public class ConditionsService {
                     }
                 } else {
                     if (conditionType.equals("delete")) {
-                        modbusService.updateModbusRegisterAlert(modbus_register_id, newAlert);
+//                        modbusService.updateModbusRegisterAlert(modbus_register_id, newAlert);
                     }
                 }
-                modbusService.updateModbusRegisterUserDataValue(modbus_register_id, user_data_value);
+//                modbusService.updateModbusRegisterUserDataValue(modbus_register_id, user_data_value);
 
                 //update device modbus status
                 deviceService.updateDeviceModbusStatus(modbus_register_id);
@@ -1520,79 +1521,79 @@ public class ConditionsService {
     }
 
 
-    public void shareConditions(String username, String vdmsid, String dockername, String conditionGroup, ShareConditionsDTO shareConditions, HttpServletRequest httpServletRequest) {
-
-        Boolean checkCondition = true;
-
-        if (conditionGroup.equals("daintree")) {
-            Set<SensorDTO> sensors = this.updateDaintreeShareConditions(shareConditions);
-            if (sensors.size() > 0) {
-                shareConditions.setSensors(sensors);
-            }
-        }
-
-        for (SensorDTO sensor : shareConditions.getSensors()) {
-            try {
-                if (shareConditions.getCondition_method() != null && shareConditions.getCondition_method().equals("replace")) {
-
-                    for (ConditionsDTO condition : shareConditions.getConditions()) {
-
-                        if (conditionGroup.equals("daintree")) {
-                            String daintree_point_name = daintreeService.getDaintreePointNameById(condition.getDaintree_point_id(), condition.getDaintree_device_id());
-
-                            if (!daintree_point_name.equals(sensor.getName())) {
-                                checkCondition = false;
-                            }
-                        }
-                        if (checkCondition) {
-
-                            ConditionsDTO deleteCondition = updateShareConditionSensorIds("replace", conditionGroup, condition, sensor);
-
-                            Set<ConditionsDTO> deleteConditionsList = conditionsRepository.getConditionsById(deleteCondition.getBacnet_device_id(), deleteCondition.getBacnet_object_id(),
-                                    deleteCondition.getLorawan_sensor_id(), deleteCondition.getLorawan_sensor_attributes_name(), deleteCondition.getSnmp_device_id(),
-                                    deleteCondition.getDisruptive_sensor_id(), deleteCondition.getMy_devices_sensor_id(), deleteCondition.getMy_devices_sensor_attributes_name(),
-                                    deleteCondition.getMonnit_sensor_id(), deleteCondition.getPelican_sensor_id(), deleteCondition.getPelican_sensor_attributes_name(), deleteCondition.getKnx_group_address(),
-                                    deleteCondition.getKnx_device_address(), deleteCondition.getSnmp_device_configuration_id(), deleteCondition.getSnmp_object_oid(), deleteCondition.getMeasuring_instrument_id(),
-                                    deleteCondition.getDaintree_device_id(), deleteCondition.getDaintree_point_id(), deleteCondition.getEcobee_sensor_id(), deleteCondition.getEcobee_sensor_attributes_name(), deleteCondition.getModbus_register_id());
-
-                            System.out.println("Update Shared delete condition " + deleteConditionsList);
-
-                            if (deleteConditionsList != null) {
-                                deleteConditions(username, vdmsid, dockername, conditionGroup, deleteConditionsList, httpServletRequest);
-                            }
-                        }
-                    }
-                }
-                if (shareConditions.getCondition_method() != null && (shareConditions.getCondition_method().equals("add") || shareConditions.getCondition_method().equals("replace"))) {
-
-                    Set<ConditionsDTO> newConditionsList = new HashSet<>();
-
-                    for (ConditionsDTO condition : shareConditions.getConditions()) {
-                        if (conditionGroup.equals("daintree")) {
-                            String daintree_point_name = daintreeService.getDaintreePointNameById(condition.getDaintree_point_id(), condition.getDaintree_device_id());
-                            if (!daintree_point_name.equals(sensor.getName())) {
-                                checkCondition = false;
-                            }
-                        }
-                        if (checkCondition) {
-                            ConditionsDTO newCondition = updateShareConditionSensorIds("add", conditionGroup, condition, sensor);
-                            newConditionsList.add(newCondition);
-                        }
-                    }
-
-                    try {
-                        upsertConditions(username, vdmsid, dockername, conditionGroup, newConditionsList, httpServletRequest);
-                    } catch (Exception e) {
-                        System.out.println("Error in upsert the share the condition " + e);
-                        System.out.println(e);
-                    }
-                }
-            } catch (Exception e) {
-                log.error("Exception in Share Conditions,endpoint: {} ,  Error message : ", httpServletRequest.getRequestURI(), e);
-            }
-        }
-
-    }
+//    public void shareConditions(String username, String vdmsid, String dockername, String conditionGroup, ShareConditionsDTO shareConditions, HttpServletRequest httpServletRequest) {
+//
+//        Boolean checkCondition = true;
+//
+//        if (conditionGroup.equals("daintree")) {
+//            Set<SensorDTO> sensors = this.updateDaintreeShareConditions(shareConditions);
+//            if (sensors.size() > 0) {
+////                shareConditions.setSensors(sensors);
+//            }
+//        }
+//
+//        for (SensorDTO sensor : shareConditions.getSensors()) {
+//            try {
+//                if (shareConditions.getCondition_method() != null && shareConditions.getCondition_method().equals("replace")) {
+//
+//                    for (ConditionsDTO condition : shareConditions.getConditions()) {
+//
+//                        if (conditionGroup.equals("daintree")) {
+//                            String daintree_point_name = daintreeService.getDaintreePointNameById(condition.getDaintree_point_id(), condition.getDaintree_device_id());
+//
+//                            if (!daintree_point_name.equals(sensor.getName())) {
+//                                checkCondition = false;
+//                            }
+//                        }
+//                        if (checkCondition) {
+//
+//                            ConditionsDTO deleteCondition = updateShareConditionSensorIds("replace", conditionGroup, condition, sensor);
+//
+//                            Set<ConditionsDTO> deleteConditionsList = conditionsRepository.getConditionsById(deleteCondition.getBacnet_device_id(), deleteCondition.getBacnet_object_id(),
+//                                    deleteCondition.getLorawan_sensor_id(), deleteCondition.getLorawan_sensor_attributes_name(), deleteCondition.getSnmp_device_id(),
+//                                    deleteCondition.getDisruptive_sensor_id(), deleteCondition.getMy_devices_sensor_id(), deleteCondition.getMy_devices_sensor_attributes_name(),
+//                                    deleteCondition.getMonnit_sensor_id(), deleteCondition.getPelican_sensor_id(), deleteCondition.getPelican_sensor_attributes_name(), deleteCondition.getKnx_group_address(),
+//                                    deleteCondition.getKnx_device_address(), deleteCondition.getSnmp_device_configuration_id(), deleteCondition.getSnmp_object_oid(), deleteCondition.getMeasuring_instrument_id(),
+//                                    deleteCondition.getDaintree_device_id(), deleteCondition.getDaintree_point_id(), deleteCondition.getEcobee_sensor_id(), deleteCondition.getEcobee_sensor_attributes_name(), deleteCondition.getModbus_register_id());
+//
+//                            System.out.println("Update Shared delete condition " + deleteConditionsList);
+//
+//                            if (deleteConditionsList != null) {
+//                                deleteConditions(username, vdmsid, dockername, conditionGroup, deleteConditionsList, httpServletRequest);
+//                            }
+//                        }
+//                    }
+//                }
+//                if (shareConditions.getCondition_method() != null && (shareConditions.getCondition_method().equals("add") || shareConditions.getCondition_method().equals("replace"))) {
+//
+//                    Set<ConditionsDTO> newConditionsList = new HashSet<>();
+//
+//                    for (ConditionsDTO condition : shareConditions.getConditions()) {
+//                        if (conditionGroup.equals("daintree")) {
+//                            String daintree_point_name = daintreeService.getDaintreePointNameById(condition.getDaintree_point_id(), condition.getDaintree_device_id());
+//                            if (!daintree_point_name.equals(sensor.getName())) {
+//                                checkCondition = false;
+//                            }
+//                        }
+//                        if (checkCondition) {
+//                            ConditionsDTO newCondition = updateShareConditionSensorIds("add", conditionGroup, condition, sensor);
+//                            newConditionsList.add(newCondition);
+//                        }
+//                    }
+//
+//                    try {
+//                        upsertConditions(username, vdmsid, dockername, conditionGroup, newConditionsList, httpServletRequest);
+//                    } catch (Exception e) {
+//                        System.out.println("Error in upsert the share the condition " + e);
+//                        System.out.println(e);
+//                    }
+//                }
+//            } catch (Exception e) {
+//                log.error("Exception in Share Conditions,endpoint: {} ,  Error message : ", httpServletRequest.getRequestURI(), e);
+//            }
+//        }
+//
+//    }
 
     public ConditionsDTO updateShareConditionSensorIds(String conditionMethod, String conditionGroup, ConditionsDTO condition, SensorDTO sensor) {
 
@@ -1649,74 +1650,74 @@ public class ConditionsService {
             case "bacnet": {
                 bacnet_device_id = sensor.getSecondary_id();
                 bacnet_object_id = sensor.getPrimary_id();
-                current_value = bacnetService.getBacnetObjectCurrentValue(bacnet_device_id, bacnet_object_id);
+//                current_value = bacnetService.getBacnetObjectCurrentValue(bacnet_device_id, bacnet_object_id);
                 break;
             }
             case "lorawan": {
                 lorawan_sensor_id = sensor.getPrimary_id();
                 lorawan_sensor_attribute_name = condition.getLorawan_sensor_attributes_name();
-                current_value = lorawanService.getLorawanSensorAttributeCurrentValue(lorawan_sensor_id, lorawan_sensor_attribute_name);
+//                current_value = lorawanService.getLorawanSensorAttributeCurrentValue(lorawan_sensor_id, lorawan_sensor_attribute_name);
                 break;
             }
             case "snmp": {
                 snmp_device_id = sensor.getPrimary_id();
-                current_value = snmpService.getSnmpDeviceCurrentValue(snmp_device_id);
+//                current_value = snmpService.getSnmpDeviceCurrentValue(snmp_device_id);
                 break;
             }
             case "disruptive": {
                 disruptive_sensor_id = sensor.getPrimary_id();
-                current_value = disruptiveService.getDisruptiveSensorCurrentValue(disruptive_sensor_id);
+//                current_value = disruptiveService.getDisruptiveSensorCurrentValue(disruptive_sensor_id);
                 break;
             }
             case "my_devices": {
                 my_devices_sensor_id = sensor.getPrimary_id();
                 my_devices_sensor_attributes_name = condition.getMy_devices_sensor_attributes_name();
-                current_value = myDeviceService.getMyDevicesSensorAttributeCurrentValue(my_devices_sensor_id, my_devices_sensor_attributes_name);
+//                current_value = myDeviceService.getMyDevicesSensorAttributeCurrentValue(my_devices_sensor_id, my_devices_sensor_attributes_name);
                 break;
             }
             case "monnit": {
                 monnit_sensor_id = sensor.getPrimary_id();
-                current_value = monnitService.getMonnitSensorCurrentValue(monnit_sensor_id);
+//                current_value = monnitService.getMonnitSensorCurrentValue(monnit_sensor_id);
                 break;
             }
             case "pelican": {
                 pelican_sensor_id = sensor.getPrimary_id();
                 pelican_sensor_attributes_name = condition.getPelican_sensor_attributes_name();
-                current_value = pelicanService.getPelicanSensorAttributeCurrentValue(pelican_sensor_id, pelican_sensor_attributes_name);
+//                current_value = pelicanService.getPelicanSensorAttributeCurrentValue(pelican_sensor_id, pelican_sensor_attributes_name);
                 break;
             }
             case "knx": {
                 knx_group_address = sensor.getPrimary_id();
                 knx_device_address = sensor.getSecondary_id();
-                current_value = knxService.getKNXCurrentValue(knx_group_address, knx_device_address);
+//                current_value = knxService.getKNXCurrentValue(knx_group_address, knx_device_address);
                 break;
 
             }
             case "snmp_object": {
                 snmp_device_configuration_id = sensor.getSecondary_id();
                 snmp_object_oid = sensor.getPrimary_id();
-                current_value = snmpService.getSnmpObjectCurrentValue(snmp_object_oid, snmp_device_configuration_id);
+//                current_value = snmpService.getSnmpObjectCurrentValue(snmp_object_oid, snmp_device_configuration_id);
                 break;
             }
             case "measuring_instrument": {
                 measuring_instrument_id = sensor.getPrimary_id();
-                current_value = measuringInstrumentService.getMeasuringInstrumentSensorCurrentValue(measuring_instrument_id);
+//                current_value = measuringInstrumentService.getMeasuringInstrumentSensorCurrentValue(measuring_instrument_id);
                 break;
             }
             case "daintree": {
                 daintree_point_id = sensor.getPrimary_id();
                 daintree_device_id = sensor.getSecondary_id();
-                current_value = daintreeService.getDaintreePointCurrentValue(daintree_point_id, daintree_device_id);
+//                current_value = daintreeService.getDaintreePointCurrentValue(daintree_point_id, daintree_device_id);
             }
             case "ecobee": {
                 ecobee_sensor_id = sensor.getPrimary_id();
                 ecobee_sensor_attributes_name = condition.getEcobee_sensor_attributes_name();
-                current_value = ecobeeService.getEcobeeSensorAttributeCurrentValue(ecobee_sensor_id, ecobee_sensor_attributes_name);
+//                current_value = ecobeeService.getEcobeeSensorAttributeCurrentValue(ecobee_sensor_id, ecobee_sensor_attributes_name);
                 break;
             }
             case "modbus": {
                 modbus_register_id = sensor.getPrimary_id();
-                current_value = modbusService.getModbusRegisterCurrentValue(modbus_register_id);
+//                current_value = modbusService.getModbusRegisterCurrentValue(modbus_register_id);
                 break;
 
             }
@@ -1773,7 +1774,7 @@ public class ConditionsService {
                     primary_id = conditionDTO.getBacnet_device_id();
                     secondary_id = conditionDTO.getBacnet_object_id();
 
-                    current_value = bacnetService.getBacnetObjectCurrentValue(primary_id, secondary_id);
+//                    current_value = bacnetService.getBacnetObjectCurrentValue(primary_id, secondary_id);
                     break;
                 }
                 case "lorawan": {
@@ -1782,13 +1783,13 @@ public class ConditionsService {
                     primary_id = conditionDTO.getLorawan_sensor_id();
                     secondary_id = conditionDTO.getLorawan_sensor_attributes_name();
 
-                    current_value = lorawanService.getLorawanSensorAttributeCurrentValue(primary_id, secondary_id);
+//                    current_value = lorawanService.getLorawanSensorAttributeCurrentValue(primary_id, secondary_id);
                     break;
                 }
                 case "snmp": { // not doing a call for it..
 
                     primary_id = conditionDTO.getSnmp_device_id();
-                    current_value = snmpService.getSnmpDeviceCurrentValue(primary_id);
+//                    current_value = snmpService.getSnmpDeviceCurrentValue(primary_id);
                     break;
                 }
                 case "disruptive": {
@@ -1796,7 +1797,7 @@ public class ConditionsService {
                     primary_id = conditionDTO.getDisruptive_sensor_id();
 
 
-                    current_value = disruptiveService.getDisruptiveSensorCurrentValue(primary_id);
+//                    current_value = disruptiveService.getDisruptiveSensorCurrentValue(primary_id);
                     break;
                 }
                 case "my_devices": {
@@ -1804,7 +1805,7 @@ public class ConditionsService {
                     primary_id = conditionDTO.getMy_devices_sensor_id();
                     secondary_id = conditionDTO.getMy_devices_sensor_attributes_name();
 
-                    current_value = myDeviceService.getMyDevicesSensorAttributeCurrentValue(primary_id, secondary_id);
+//                    current_value = myDeviceService.getMyDevicesSensorAttributeCurrentValue(primary_id, secondary_id);
                     break;
                 }
 
@@ -1812,14 +1813,14 @@ public class ConditionsService {
 
                     primary_id = conditionDTO.getMonnit_sensor_id();
 
-                    current_value = monnitService.getMonnitSensorCurrentValue(primary_id);
+//                    current_value = monnitService.getMonnitSensorCurrentValue(primary_id);
                     break;
                 }
                 case "pelican": {
 
                     primary_id = conditionDTO.getPelican_sensor_id();
                     secondary_id = conditionDTO.getPelican_sensor_attributes_name();
-                    current_value = pelicanService.getPelicanSensorAttributeCurrentValue(primary_id, secondary_id);
+//                    current_value = pelicanService.getPelicanSensorAttributeCurrentValue(primary_id, secondary_id);
                     break;
                 }
 
@@ -1827,7 +1828,7 @@ public class ConditionsService {
 
                     primary_id = conditionDTO.getKnx_group_address();
                     secondary_id = conditionDTO.getKnx_device_address();
-                    current_value = knxService.getKNXCurrentValue(primary_id, secondary_id);
+//                    current_value = knxService.getKNXCurrentValue(primary_id, secondary_id);
                     break;
 
                 }
@@ -1836,7 +1837,7 @@ public class ConditionsService {
 
                     primary_id = conditionDTO.getSnmp_object_oid();
                     secondary_id = conditionDTO.getSnmp_device_configuration_id();
-                    current_value = snmpService.getSnmpObjectCurrentValue(primary_id, secondary_id);
+//                    current_value = snmpService.getSnmpObjectCurrentValue(primary_id, secondary_id);
                     break;
                 }
                 case "measuring_instrument": {
@@ -1848,18 +1849,18 @@ public class ConditionsService {
                 case "daintree": {
                     primary_id = conditionDTO.getDaintree_point_id();
                     secondary_id = conditionDTO.getDaintree_device_id();
-                    current_value = daintreeService.getDaintreePointCurrentValue(primary_id, secondary_id);
+//                    current_value = daintreeService.getDaintreePointCurrentValue(primary_id, secondary_id);
                     break;
                 }
                 case "ecobee": {
                     primary_id = conditionDTO.getEcobee_sensor_id();
                     secondary_id = conditionDTO.getEcobee_sensor_attributes_name();
-                    current_value = ecobeeService.getEcobeeSensorAttributeCurrentValue(primary_id, secondary_id);
+//                    current_value = ecobeeService.getEcobeeSensorAttributeCurrentValue(primary_id, secondary_id);
                     break;
                 }
                 case "modbus": {
                     primary_id = conditionDTO.getModbus_register_id();
-                    current_value = modbusService.getModbusRegisterCurrentValue(primary_id);
+//                    current_value = modbusService.getModbusRegisterCurrentValue(primary_id);
                     break;
                 }
 
@@ -1872,18 +1873,18 @@ public class ConditionsService {
     //send bacnet alert info for all required platforms
     public void sendBacnetAlertInfo(String bacnet_device_id, String bacnet_object_id, String alert_message) {
         try {
-            BacnetObjectDetailsDTO bacnetObjectDetails = bacnetService.getBacnetObjectDetailsById(bacnet_device_id, bacnet_object_id);
+//            BacnetObjectDetailsDTO bacnetObjectDetails = bacnetService.getBacnetObjectDetailsById(bacnet_device_id, bacnet_object_id);
 
-            bacnetObjectDetails.setAlert_message(alert_message);
+//            bacnetObjectDetails.setAlert_message(alert_message);
 
             //send bacnet alert socket event
-            sockertService.sockertBacnetAlert(bacnetObjectDetails);
+//            sockertService.sockertBacnetAlert(bacnetObjectDetails);
             //insert bacnet alertinto history
-            historyService.insertBacnetAlertHistory(bacnetObjectDetails);
+//            historyService.insertBacnetAlertHistory(bacnetObjectDetails);
             //send bacnet alert email and sms
 //            alertService.sendBacnetAlert(bacnetObjectDetails);
             //send bacnet alert info to rabbitmq
-            rabbitmqService.rabbitmqBacnetAlertData(bacnetObjectDetails);
+//            rabbitmqService.rabbitmqBacnetAlertData(bacnetObjectDetails);
         } catch (Exception e) {
             System.out.println("Error sending bacnet alert info " + e);
             System.out.println(e);
@@ -1893,18 +1894,18 @@ public class ConditionsService {
     //send lorawan alert info for all required platforms
     public void sendLorawanAlertInfo(String lorawan_sensor_id, String lorawan_sensor_attributes_name, String alert_message) {
         try {
-            LorawanSensorDetailsDTO lorawanSensorDetails = lorawanService.getLorawanSensorDetailsById(lorawan_sensor_id);
+//            LorawanSensorDetailsDTO lorawanSensorDetails = lorawanService.getLorawanSensorDetailsById(lorawan_sensor_id);
 
-            lorawanSensorDetails.setAlert_message(alert_message);
+//            lorawanSensorDetails.setAlert_message(alert_message);
 
             //send lorawan alert socket event
-            sockertService.socketLorawanAlert(lorawanSensorDetails);
+//            sockertService.socketLorawanAlert(lorawanSensorDetails);
             //insert lorawan alertinto history
-            historyService.insertLorawanAlertHistory(lorawanSensorDetails, lorawan_sensor_attributes_name);
+//            historyService.insertLorawanAlertHistory(lorawanSensorDetails, lorawan_sensor_attributes_name);
             //send lorawan alert email and sms
 //            alertService.sendLorawanAlert(lorawanSensorDetails, lorawan_sensor_attributes_name);
             //send lorawan alert info to rabbitmq
-            rabbitmqService.rabbitmqLorawanAlertData(lorawanSensorDetails, lorawan_sensor_attributes_name);
+//            rabbitmqService.rabbitmqLorawanAlertData(lorawanSensorDetails, lorawan_sensor_attributes_name);
         } catch (Exception e) {
             System.out.println("Error sending lorawan alert info " + e);
             System.out.println(e);
@@ -1914,18 +1915,18 @@ public class ConditionsService {
     //send disruptive alert info for all required platforms
     public void sendDisruptiveAlertInfo(String disruptive_sensor_id, String alert_message) {
         try {
-            DisruptiveSensorDetailsDTO disruptiveSensorDetails = disruptiveService.getDisruptiveSensorDetailsById(disruptive_sensor_id);
-
-            disruptiveSensorDetails.setAlert_message(alert_message);
-
-            //send disruptive alert socket event
-          //  sockertService.socketDisruptiveSensorAlert(disruptiveSensorDetails);
-            //insert disruptive alert into history
-            historyService.insertDisruptiveSensorAlertHistory(disruptiveSensorDetails);
-            //send disruptive alert email and sms
-//            alertService.sendDisruptiveSensorAlert(disruptiveSensorDetails);
-            //send disruptive alert info to rabbitmq
-            rabbitmqService.rabbitmqDisruptiveAlertData(disruptiveSensorDetails);
+//            DisruptiveSensorDetailsDTO disruptiveSensorDetails = disruptiveService.getDisruptiveSensorDetailsById(disruptive_sensor_id);
+//
+//            disruptiveSensorDetails.setAlert_message(alert_message);
+//
+//            //send disruptive alert socket event
+//          //  sockertService.socketDisruptiveSensorAlert(disruptiveSensorDetails);
+//            //insert disruptive alert into history
+//            historyService.insertDisruptiveSensorAlertHistory(disruptiveSensorDetails);
+//            //send disruptive alert email and sms
+////            alertService.sendDisruptiveSensorAlert(disruptiveSensorDetails);
+//            //send disruptive alert info to rabbitmq
+//            rabbitmqService.rabbitmqDisruptiveAlertData(disruptiveSensorDetails);
         } catch (Exception e) {
             System.out.println("Error sending disruptive alert info " + e);
             System.out.println(e);
@@ -1935,18 +1936,18 @@ public class ConditionsService {
     //send mydevices alert info for all required platforms
     public void sendMyDevicesAlertInfo(String my_devices_sensor_id, String my_devices_sensor_attributes_name, String alert_message) {
         try {
-            MyDevicesSensorDetailsDTO myDevicesSensorDetails = myDeviceService.getMyDevicesSensorDetailsById(my_devices_sensor_id);
+//            MyDevicesSensorDetailsDTO myDevicesSensorDetails = myDeviceService.getMyDevicesSensorDetailsById(my_devices_sensor_id);
 
-            myDevicesSensorDetails.setAlert_message(alert_message);
+//            myDevicesSensorDetails.setAlert_message(alert_message);
 
             //send mydevices alert socket event
-            sockertService.socketMyDevicesAlert(myDevicesSensorDetails);
-            //insert mydevices alert into history
-            historyService.insertMyDevicesAlertHistory(myDevicesSensorDetails, my_devices_sensor_attributes_name);
-            //send mydevices alert email and sms
-//            alertService.sendMyDevicesAlert(myDevicesSensorDetails, my_devices_sensor_attributes_name);
-            //send myedevices alert info to rabbitmq
-            rabbitmqService.rabbitmqMyDevicesAlertData(myDevicesSensorDetails, my_devices_sensor_attributes_name);
+//            sockertService.socketMyDevicesAlert(myDevicesSensorDetails);
+//            //insert mydevices alert into history
+//            historyService.insertMyDevicesAlertHistory(myDevicesSensorDetails, my_devices_sensor_attributes_name);
+//            //send mydevices alert email and sms
+////            alertService.sendMyDevicesAlert(myDevicesSensorDetails, my_devices_sensor_attributes_name);
+//            //send myedevices alert info to rabbitmq
+//            rabbitmqService.rabbitmqMyDevicesAlertData(myDevicesSensorDetails, my_devices_sensor_attributes_name);
         } catch (Exception e) {
             System.out.println("Error sending mydevices alert info " + e);
             System.out.println(e);
@@ -1956,18 +1957,18 @@ public class ConditionsService {
     //send monnit alert info for all required platforms
     public void sendMonnitAlertInfo(String monnit_sensor_id, String alert_message) {
         try {
-            MonnitSensorDetailsDTO monnitSensorDetails = monnitService.getMonnitSensorDetailsById(monnit_sensor_id);
-
-            monnitSensorDetails.setAlert_message(alert_message);
-
-            //send monnit alert socket event
-            sockertService.socketMonnitSensorAlert(monnitSensorDetails);
-            //insert monnit alert into history
-            historyService.insertMonnitSensorAlertHistory(monnitSensorDetails);
-            //send monnit email and sms alert
-//            alertService.sendMonnitSensorAlert(monnitSensorDetails);
-            //send monnit alert info to rabbitmq
-            rabbitmqService.rabbitmqMonnitAlertData(monnitSensorDetails);
+//            MonnitSensorDetailsDTO monnitSensorDetails = monnitService.getMonnitSensorDetailsById(monnit_sensor_id);
+//
+//            monnitSensorDetails.setAlert_message(alert_message);
+//
+//            //send monnit alert socket event
+//            sockertService.socketMonnitSensorAlert(monnitSensorDetails);
+//            //insert monnit alert into history
+//            historyService.insertMonnitSensorAlertHistory(monnitSensorDetails);
+//            //send monnit email and sms alert
+////            alertService.sendMonnitSensorAlert(monnitSensorDetails);
+//            //send monnit alert info to rabbitmq
+//            rabbitmqService.rabbitmqMonnitAlertData(monnitSensorDetails);
         } catch (Exception e) {
             System.out.println("Error sending monnit alert info " + e);
             System.out.println(e);
@@ -1977,18 +1978,18 @@ public class ConditionsService {
     //send pelican alert info for all required platforms
     public void sendPelicanAlertInfo(String pelican_sensor_id, String pelican_sensor_attributes_name, String alert_message) {
         try {
-            PelicanSensorDetailsDTO pelicanSensorDetails = pelicanService.getPelicanSensorDetailsById(pelican_sensor_id);
-
-            pelicanSensorDetails.setAlert_message(alert_message);
-
-            //send pelican alert socket event
-            sockertService.socketPelicanAlert(pelicanSensorDetails);
-            //insert pelican alert into history
-            historyService.insertPelicanAlertHistory(pelicanSensorDetails, pelican_sensor_attributes_name);
-            //send pelican alert email and sms
-//            alertService.sendPelicanAlert(pelicanSensorDetails, pelican_sensor_attributes_name);
-            //send pelican alert info to rabbitmq
-            rabbitmqService.rabbitmqPelicanAlertData(pelicanSensorDetails, pelican_sensor_attributes_name);
+//            PelicanSensorDetailsDTO pelicanSensorDetails = pelicanService.getPelicanSensorDetailsById(pelican_sensor_id);
+//
+//            pelicanSensorDetails.setAlert_message(alert_message);
+//
+//            //send pelican alert socket event
+//            sockertService.socketPelicanAlert(pelicanSensorDetails);
+//            //insert pelican alert into history
+//            historyService.insertPelicanAlertHistory(pelicanSensorDetails, pelican_sensor_attributes_name);
+//            //send pelican alert email and sms
+////            alertService.sendPelicanAlert(pelicanSensorDetails, pelican_sensor_attributes_name);
+//            //send pelican alert info to rabbitmq
+//            rabbitmqService.rabbitmqPelicanAlertData(pelicanSensorDetails, pelican_sensor_attributes_name);
         } catch (Exception e) {
             System.out.println("Error sending pelican alert info " + e);
             System.out.println(e);
@@ -1998,18 +1999,18 @@ public class ConditionsService {
     //send knx alert info for all required platforms
     public void sendKNXAlertInfo(String knx_device_address, String knx_group_address, String alert_message) {
         try {
-            KNXGroupDetailsDTO knxGroupDetails = knxService.getKNXGroupDetailsByAddress(knx_device_address, knx_group_address);
-
-            knxGroupDetails.setAlert_message(alert_message);
-
-            //send knx alert socket event
-            sockertService.socketKNXAlert(knxGroupDetails);
-            //insert knx alertinto history
-            historyService.insertKNXAlertHistory(knxGroupDetails);
-            //send knx alert email and sms
-//            alertService.sendKNXAlert(knxGroupDetails);
-            //send bacnet alert info to rabbitmq
-            rabbitmqService.rabbitmqKNXAlertData(knxGroupDetails);
+//            KNXGroupDetailsDTO knxGroupDetails = knxService.getKNXGroupDetailsByAddress(knx_device_address, knx_group_address);
+//
+//            knxGroupDetails.setAlert_message(alert_message);
+//
+//            //send knx alert socket event
+//            sockertService.socketKNXAlert(knxGroupDetails);
+//            //insert knx alertinto history
+//            historyService.insertKNXAlertHistory(knxGroupDetails);
+//            //send knx alert email and sms
+////            alertService.sendKNXAlert(knxGroupDetails);
+//            //send bacnet alert info to rabbitmq
+//            rabbitmqService.rabbitmqKNXAlertData(knxGroupDetails);
         } catch (Exception e) {
             System.out.println("Error sending KNX alert info " + e);
             System.out.println(e);
@@ -2017,18 +2018,18 @@ public class ConditionsService {
     }
 
     private void sendSnmpObjectAlertInfo(String snmp_device_configuration_id, String snmp_object_oid, String alert_message) {
-        SnmpObjectDetailsDTO snmpObjectDetails = snmpService.getSnmpObjectDetailsById(snmp_device_configuration_id, snmp_object_oid);
-
-        snmpObjectDetails.setAlert_message(alert_message);
-
-        //send snmp alert socket event
-        sockertService.socketSnmpObjectAlert(snmpObjectDetails);
-        //insert snmp alert into history
-        historyService.insertSnmpObjectAlertHistory(snmpObjectDetails);
-        //send snmp alert email and sms
-//        alertService.sendSnmpObjectAlert(snmpObjectDetails);
-        //send bacnet alert info to rabbitmq
-        rabbitmqService.rabbitmqSnmpObjectAlertData(snmpObjectDetails);
+//        SnmpObjectDetailsDTO snmpObjectDetails = snmpService.getSnmpObjectDetailsById(snmp_device_configuration_id, snmp_object_oid);
+//
+//        snmpObjectDetails.setAlert_message(alert_message);
+//
+//        //send snmp alert socket event
+//        sockertService.socketSnmpObjectAlert(snmpObjectDetails);
+//        //insert snmp alert into history
+//        historyService.insertSnmpObjectAlertHistory(snmpObjectDetails);
+//        //send snmp alert email and sms
+////        alertService.sendSnmpObjectAlert(snmpObjectDetails);
+//        //send bacnet alert info to rabbitmq
+//        rabbitmqService.rabbitmqSnmpObjectAlertData(snmpObjectDetails);
     }
 
     //send measuring instrument alert info for all required platforms
@@ -2039,13 +2040,13 @@ public class ConditionsService {
             measuringInstrumentDetails.setAlert_message(alert_message);
 
             //send measuring instrument alert socket event
-            sockertService.socketMeasuringInstrumentSensorAlert(measuringInstrumentDetails);
-            //insert measuring instrument alert into history
-            historyService.insertMeasuringInstrumentSensorAlertHistory(measuringInstrumentDetails);
-            //send measuring instrument and sms alert
-//            alertService.sendMeasuringInstrumentSensorAlert(measuringInstrumentDetails);
-            //send measuring instrument alert info to rabbitmq
-            rabbitmqService.rabbitmqMeasuringInstrumentAlertData(measuringInstrumentDetails);
+//            sockertService.socketMeasuringInstrumentSensorAlert(measuringInstrumentDetails);
+//            //insert measuring instrument alert into history
+//            historyService.insertMeasuringInstrumentSensorAlertHistory(measuringInstrumentDetails);
+//            //send measuring instrument and sms alert
+////            alertService.sendMeasuringInstrumentSensorAlert(measuringInstrumentDetails);
+//            //send measuring instrument alert info to rabbitmq
+//            rabbitmqService.rabbitmqMeasuringInstrumentAlertData(measuringInstrumentDetails);
         } catch (Exception e) {
             System.out.println("Error sending measuring instrument alert info " + e);
             System.out.println(e);
@@ -2054,20 +2055,20 @@ public class ConditionsService {
 
     private void sendDaintreeAlertInfo(String daintree_device_id, String daintree_point_id, String alert_message) {
         try {
-            DaintreeDeviceDetailsDTO daintreeDetails = daintreeService.getDaintreeDetailsById(daintree_device_id);
-            daintreeDetails.setAlert_message(alert_message);
-
-            //send daintree alert socket event
-            sockertService.socketDaintreeDevicesAlert(daintreeDetails);
-
-            //insert daintree alert into history
-            historyService.insertDaintreeDevicesAlertHistory(daintreeDetails, daintree_point_id);
-
-            //send daintree and sms alert
-//            alertService.sendDaintreenDeviceAlert(daintreeDetails, daintree_point_id);
-
-            //send daintree alert info to rabbitmq
-            rabbitmqService.rabbitmqDaintreeDeviceAlertData(daintreeDetails, daintree_point_id);
+//            DaintreeDeviceDetailsDTO daintreeDetails = daintreeService.getDaintreeDetailsById(daintree_device_id);
+//            daintreeDetails.setAlert_message(alert_message);
+//
+//            //send daintree alert socket event
+//            sockertService.socketDaintreeDevicesAlert(daintreeDetails);
+//
+//            //insert daintree alert into history
+//            historyService.insertDaintreeDevicesAlertHistory(daintreeDetails, daintree_point_id);
+//
+//            //send daintree and sms alert
+////            alertService.sendDaintreenDeviceAlert(daintreeDetails, daintree_point_id);
+//
+//            //send daintree alert info to rabbitmq
+//            rabbitmqService.rabbitmqDaintreeDeviceAlertData(daintreeDetails, daintree_point_id);
 
         } catch (Exception e) {
             System.out.println("Error sending daintree alert info " + e);
@@ -2077,158 +2078,158 @@ public class ConditionsService {
 
     public void sendAlertInfo(String conditionGroup, ConditionsDTO condition, String alert_message, BigInteger schedule_job_created_time) {
 
-        SensorAlertDTO sensorAlert = null;
-        DeviceAlertDTO deviceAlert = null;
-        AlertProfileDTO alertProfile = null;
+//        SensorAlertDTO sensorAlert = null;
+//        DeviceAlertDTO deviceAlert = null;
+//        AlertProfileDTO alertProfile = null;
+//
+//
+//        switch (conditionGroup) {
+//            case "bacnet": {
+//                //send bacnet alert email and sms
+//                sensorAlert = bacnetService.getBacnetObjectAlertDetails(condition.getBacnet_device_id(), condition.getBacnet_object_id());
+//                break;
+//            }
+//            case "lorawan": {
+//                //send lorawan alert email and sms
+//                sensorAlert = lorawanService.getLorawanSensorAttributesAlertDetails(condition.getLorawan_sensor_id(), condition.getLorawan_sensor_attributes_name());
+//                break;
+//            }
+//            case "disruptive": {
+//                //send disruptive alert email and sms
+//                sensorAlert = disruptiveService.getDisruptiveSensorAlertDetails(condition.getDisruptive_sensor_id());
+//                break;
+//            }
+//            case "my_devices": {
+//                //send mydevices alert email and sms
+//                sensorAlert = myDeviceService.getMyDevicesSensorAttributesAlertDetails(condition.getMy_devices_sensor_id(), condition.getMy_devices_sensor_attributes_name());
+//                break;
+//            }
+//            case "monnit": {
+//                //send monnit email and sms alert
+//                sensorAlert = monnitService.getMonnitSensorAlertDetails(condition.getMonnit_sensor_id());
+//                break;
+//            }
+//            case "pelican": {
+//                //send pelican alert email and sms
+//                sensorAlert = pelicanService.getPelicanSensorAttributesAlertDetails(condition.getPelican_sensor_id(), condition.getPelican_sensor_attributes_name());
+//                break;
+//            }
+//            case "knx": {
+//                //send knx alert email and sms
+//                sensorAlert = knxService.getKNXGroupDetailsByAddressAlertDetails(condition.getKnx_device_address(), condition.getKnx_group_address());
+//                break;
+//            }
+//            case "snmp_object": {
+//                //send snmp alert email and sms
+//                sensorAlert = snmpService.getSnmpObjectAlertDetails(condition.getSnmp_device_configuration_id(), condition.getSnmp_object_oid());
+//                break;
+//            }
+//            case "measuring_instrument": {
+//                //send measuring instrument and sms alert
+//                sensorAlert = measuringInstrumentService.getMeasuringInstrumentAlertDetails(condition.getMeasuring_instrument_id());
+//                break;
+//            }
+//            case "daintree": {
+//                //send knx alert email and sms
+//                sensorAlert = daintreeService.getDaintreePointAlertDetails(condition.getDaintree_device_id(), condition.getDaintree_point_id());
+//                break;
+//            }
+//            case "ecobee": {
+//                sensorAlert = ecobeeService.getEcobeeSensorAttributesAlertDetails(condition.getEcobee_sensor_id(), condition.getEcobee_sensor_attributes_name());
+//                break;
+//            }
+//            case "modbus": {
+//                sensorAlert = modbusService.getModbusAlertDetails(condition.getModbus_register_id());
+//                break;
+//            }
+//            default: {
+//                return;
+//            }
 
-
-        switch (conditionGroup) {
-            case "bacnet": {
-                //send bacnet alert email and sms
-                sensorAlert = bacnetService.getBacnetObjectAlertDetails(condition.getBacnet_device_id(), condition.getBacnet_object_id());
-                break;
-            }
-            case "lorawan": {
-                //send lorawan alert email and sms
-                sensorAlert = lorawanService.getLorawanSensorAttributesAlertDetails(condition.getLorawan_sensor_id(), condition.getLorawan_sensor_attributes_name());
-                break;
-            }
-            case "disruptive": {
-                //send disruptive alert email and sms
-                sensorAlert = disruptiveService.getDisruptiveSensorAlertDetails(condition.getDisruptive_sensor_id());
-                break;
-            }
-            case "my_devices": {
-                //send mydevices alert email and sms
-                sensorAlert = myDeviceService.getMyDevicesSensorAttributesAlertDetails(condition.getMy_devices_sensor_id(), condition.getMy_devices_sensor_attributes_name());
-                break;
-            }
-            case "monnit": {
-                //send monnit email and sms alert
-                sensorAlert = monnitService.getMonnitSensorAlertDetails(condition.getMonnit_sensor_id());
-                break;
-            }
-            case "pelican": {
-                //send pelican alert email and sms
-                sensorAlert = pelicanService.getPelicanSensorAttributesAlertDetails(condition.getPelican_sensor_id(), condition.getPelican_sensor_attributes_name());
-                break;
-            }
-            case "knx": {
-                //send knx alert email and sms
-                sensorAlert = knxService.getKNXGroupDetailsByAddressAlertDetails(condition.getKnx_device_address(), condition.getKnx_group_address());
-                break;
-            }
-            case "snmp_object": {
-                //send snmp alert email and sms
-                sensorAlert = snmpService.getSnmpObjectAlertDetails(condition.getSnmp_device_configuration_id(), condition.getSnmp_object_oid());
-                break;
-            }
-            case "measuring_instrument": {
-                //send measuring instrument and sms alert
-                sensorAlert = measuringInstrumentService.getMeasuringInstrumentAlertDetails(condition.getMeasuring_instrument_id());
-                break;
-            }
-            case "daintree": {
-                //send knx alert email and sms
-                sensorAlert = daintreeService.getDaintreePointAlertDetails(condition.getDaintree_device_id(), condition.getDaintree_point_id());
-                break;
-            }
-            case "ecobee": {
-                sensorAlert = ecobeeService.getEcobeeSensorAttributesAlertDetails(condition.getEcobee_sensor_id(), condition.getEcobee_sensor_attributes_name());
-                break;
-            }
-            case "modbus": {
-                sensorAlert = modbusService.getModbusAlertDetails(condition.getModbus_register_id());
-                break;
-            }
-            default: {
-                return;
-            }
-
-        }
-
-        sensorAlert.setAlert_message(alert_message);
-        //sensor alert changes
-        sensorAlert.setPriority(condition.getPriority()); // directly using the method from condition
-
-        if (sensorAlert.getDevice_id() != null) {
-            log.info("Checking AlertDownTimeState for DeviceId: {} and AlertProfileId: {}",sensorAlert.getDevice_id(), condition.getAlert_profile_id());
-            Boolean alertDowntimeState = alertDowntimeScheduleService.checkAlertDowntime(sensorAlert.getDevice_id(), condition.getAlert_profile_id());
-            log.info("AlertDownTimeState {}",alertDowntimeState);
-            System.out.println("Alert State " + alertDowntimeState);
-            if (!(alertDowntimeState)) {
-                deviceAlert = deviceService.getDeviceAlertInfoById(sensorAlert.getDevice_id());
-                alertProfile = alertProfileService.getAlertProfileById(condition.getAlert_profile_id());
-                if (alertProfile != null) {
-
-                    alertService.sendSensorAlertInfo(sensorAlert, deviceAlert, alertProfile, schedule_job_created_time);
-
-                    if (alertProfile.getIoc() != null && alertProfile.getIoc() == 1) {
-                        iocService.sendSensorAlertDataToIOC(condition, deviceAlert, sensorAlert, alertProfile, schedule_job_created_time);
-                    }
-                }
-            }
-        }
+//        }
+//
+//        sensorAlert.setAlert_message(alert_message);
+//        //sensor alert changes
+//        sensorAlert.setPriority(condition.getPriority()); // directly using the method from condition
+//
+//        if (sensorAlert.getDevice_id() != null) {
+//            log.info("Checking AlertDownTimeState for DeviceId: {} and AlertProfileId: {}",sensorAlert.getDevice_id(), condition.getAlert_profile_id());
+//            Boolean alertDowntimeState = alertDowntimeScheduleService.checkAlertDowntime(sensorAlert.getDevice_id(), condition.getAlert_profile_id());
+//            log.info("AlertDownTimeState {}",alertDowntimeState);
+//            System.out.println("Alert State " + alertDowntimeState);
+//            if (!(alertDowntimeState)) {
+//                deviceAlert = deviceService.getDeviceAlertInfoById(sensorAlert.getDevice_id());
+//                alertProfile = alertProfileService.getAlertProfileById(condition.getAlert_profile_id());
+//                if (alertProfile != null) {
+//
+//                    alertService.sendSensorAlertInfo(sensorAlert, deviceAlert, alertProfile, schedule_job_created_time);
+//
+//                    if (alertProfile.getIoc() != null && alertProfile.getIoc() == 1) {
+//                        iocService.sendSensorAlertDataToIOC(condition, deviceAlert, sensorAlert, alertProfile, schedule_job_created_time);
+//                    }
+//                }
+//            }
+//        }
 
     }
 
-    public void updateAlertProfileId(String alert_profile_id) {
-        conditionsRepository.updateAlertProfileId(alert_profile_id);
-    }
+//    public void updateAlertProfileId(String alert_profile_id) {
+//        conditionsRepository.updateAlertProfileId(alert_profile_id);
+//    }
 
-    private Set<SensorDTO> updateDaintreeShareConditions(ShareConditionsDTO shareConditions) {
-        Set<SensorDTO> sensors = new HashSet<>();
-        SensorDTO newSensorDTO;
-        for (ConditionsDTO conditionsDTO : shareConditions.getConditions()) {
-            String daintree_point_name = daintreeService.getDaintreePointNameById(conditionsDTO.getDaintree_point_id(), conditionsDTO.getDaintree_device_id());
-            for (SensorDTO sensorDTO : shareConditions.getSensors()) {
-                Set<String> daintree_point_ids = daintreeService.getDaintreePointIdsByName(daintree_point_name, sensorDTO.getPrimary_id());
-                for (String daintree_point_id : daintree_point_ids) {
-                    newSensorDTO = new SensorDTO(daintree_point_id, sensorDTO.getPrimary_id(), daintree_point_name);
-                    sensors.add(newSensorDTO);
-                }
-            }
-        }
-        return sensors;
-    }
+//    private Set<SensorDTO> updateDaintreeShareConditions(ShareConditionsDTO shareConditions) {
+//        Set<SensorDTO> sensors = new HashSet<>();
+//        SensorDTO newSensorDTO;
+//        for (ConditionsDTO conditionsDTO : shareConditions.getConditions()) {
+//            String daintree_point_name = daintreeService.getDaintreePointNameById(conditionsDTO.getDaintree_point_id(), conditionsDTO.getDaintree_device_id());
+//            for (SensorDTO sensorDTO : shareConditions.getSensors()) {
+//                Set<String> daintree_point_ids = daintreeService.getDaintreePointIdsByName(daintree_point_name, sensorDTO.getPrimary_id());
+//                for (String daintree_point_id : daintree_point_ids) {
+//                    newSensorDTO = new SensorDTO(daintree_point_id, sensorDTO.getPrimary_id(), daintree_point_name);
+//                    sensors.add(newSensorDTO);
+//                }
+//            }
+//        }
+//        return sensors;
+//    }
 
     //send ecobee alert info for all required platforms
-    public void sendEcobeeAlertInfo(String ecobee_sensor_id, String ecobee_sensor_attributes_name, String alert_message) {
-        try {
-            EcobeeSensorDetailsDTO ecobeeSensorDetails = ecobeeService.getEcobeeSensorDetailsById(ecobee_sensor_id);
+//    public void sendEcobeeAlertInfo(String ecobee_sensor_id, String ecobee_sensor_attributes_name, String alert_message) {
+//        try {
+//            EcobeeSensorDetailsDTO ecobeeSensorDetails = ecobeeService.getEcobeeSensorDetailsById(ecobee_sensor_id);
+//
+//            ecobeeSensorDetails.setAlert_message(alert_message);
+//
+//            //send ecobee alert socket event
+//            sockertService.socketEcobeeAlert(ecobeeSensorDetails);
+//
+//            //insert ecobee alert into history
+//            historyService.insertEcobeeAlertHistory(ecobeeSensorDetails, ecobee_sensor_attributes_name);
+//
+//            //send ecobee alert info to rabbitmq
+//            rabbitmqService.rabbitmqEcobeeAlertData(ecobeeSensorDetails, ecobee_sensor_attributes_name);
+//        } catch (Exception e) {
+//            System.out.println("Error sending ecobee alert info " + e);
+//            System.out.println(e);
+//        }
+//    }
 
-            ecobeeSensorDetails.setAlert_message(alert_message);
-
-            //send ecobee alert socket event
-            sockertService.socketEcobeeAlert(ecobeeSensorDetails);
-
-            //insert ecobee alert into history
-            historyService.insertEcobeeAlertHistory(ecobeeSensorDetails, ecobee_sensor_attributes_name);
-
-            //send ecobee alert info to rabbitmq
-            rabbitmqService.rabbitmqEcobeeAlertData(ecobeeSensorDetails, ecobee_sensor_attributes_name);
-        } catch (Exception e) {
-            System.out.println("Error sending ecobee alert info " + e);
-            System.out.println(e);
-        }
-    }
-
-    private void sendModbusAlertInfo(String modbus_register_id, String alert_message) {
-        try {
-            ModbusRegisterDetailsDTO modbusRegisterDetails = modbusService.getModbusRegisterDetailsById(modbus_register_id);
-            modbusRegisterDetails.setAlert_message(alert_message);
-            //send Modbus alert socket event
-            sockertService.sockertModbusAlert(modbusRegisterDetails);
-            //insert Modbus alertinto history
-            historyService.insertModbusAlertHistory(modbusRegisterDetails);
-            //send Modbus alert info to rabbitmq
-            rabbitmqService.rabbitmqModbusAlertData(modbusRegisterDetails);
-        } catch (Exception e) {
-            System.out.println("Error sending modbus alert info " + e);
-            System.out.println(e);
-
-        }
-    }
+//    private void sendModbusAlertInfo(String modbus_register_id, String alert_message) {
+//        try {
+//            ModbusRegisterDetailsDTO modbusRegisterDetails = modbusService.getModbusRegisterDetailsById(modbus_register_id);
+//            modbusRegisterDetails.setAlert_message(alert_message);
+//            //send Modbus alert socket event
+//            sockertService.sockertModbusAlert(modbusRegisterDetails);
+//            //insert Modbus alertinto history
+//            historyService.insertModbusAlertHistory(modbusRegisterDetails);
+//            //send Modbus alert info to rabbitmq
+//            rabbitmqService.rabbitmqModbusAlertData(modbusRegisterDetails);
+//        } catch (Exception e) {
+//            System.out.println("Error sending modbus alert info " + e);
+//            System.out.println(e);
+//
+//        }
+//    }
 
     public void scheduleSensorAlertJob(String job_type, ConditionsDTO condition, String condition_group) {
         //api call to quartz to add the job
@@ -2245,7 +2246,7 @@ public class ConditionsService {
             scheduledJobDTO.setCondition_id(condition.getId());
             scheduledJobDTO.setCondition_type("sensor");
             scheduledJobDTO.setCondition_group(condition_group);
-            System.out.println("print timestamp : " + scheduledJobDTO.getCreated_timestamp());
+//            System.out.println("print timestamp : " + scheduledJobDTO.getCreated_timestamp());
             jobSchedulerService.addScheduledJob(Set.of(scheduledJobDTO));
         }
     }
@@ -2322,7 +2323,7 @@ public class ConditionsService {
             dto.setShowAlertMessageAsValue((Boolean) row.get("show_alert_message_as_value"));
             dto.setEnableThresholdLineOnChart((Integer) row.get("enable_threshold_line_onchart"));
             dto.setColorOfThresholdLineOnChart((String) row.get("color_of_threshold_line_onchart"));
-            dto.setAlertAfter((Boolean) row.get("alert_after"));
+//            dto.setAlertAfter((Boolean) row.get("alert_after"));
             dto.setAlertAfterTime((Integer) row.get("alert_time"));
             dto.setScheduleAlert((Integer) row.get("schedule_alert"));
             dto.setScheduleStartTime((String) row.get("schedule_start_time"));

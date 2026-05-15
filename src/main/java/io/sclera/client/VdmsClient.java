@@ -90,14 +90,15 @@ public class VdmsClient {
      */
     public void publishEvent(String topic, Object payload) {
         String url = daprBaseUrl + "/v1.0/publish/" + PUBSUB_NAME + "/" + topic;
+        log.info("[Dapr sidecar →] publish topic={} | url={}", topic, url);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Object> request = new HttpEntity<>(payload, headers);
         try {
             rest.postForEntity(url, request, Void.class);
-            log.info("[VdmsClient] Published topic={}", topic);
+            log.info("[Dapr sidecar ←] publish accepted topic={}", topic);
         } catch (Exception e) {
-            log.error("[VdmsClient] Failed to publish topic={}: {}", topic, e.getMessage());
+            log.error("[Dapr sidecar ✗] publish failed topic={}: {}", topic, e.getMessage());
         }
     }
 
@@ -105,8 +106,9 @@ public class VdmsClient {
 
     private <T> T invoke(String vdmsPath, Class<T> responseType) {
         String url = daprBaseUrl + "/v1.0/invoke/" + VDMS_APP_ID + "/method/" + vdmsPath;
-        log.debug("[VdmsClient] GET {}", url);
+        log.info("[Dapr sidecar →] invoke  path={} | url={}", vdmsPath, url);
         ResponseEntity<T> response = rest.getForEntity(url, responseType);
+        log.info("[Dapr sidecar ←] respond path={} | status={}", vdmsPath, response.getStatusCode());
         return response.getBody();
     }
 

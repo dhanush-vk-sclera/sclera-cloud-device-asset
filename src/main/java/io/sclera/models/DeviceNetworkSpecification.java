@@ -4,6 +4,7 @@ package io.sclera.models;
 import javax.persistence.*;
 import java.util.Objects;
 
+@NamedNativeQuery(name = "DeviceNetworkSpecification.updateDeviceIdBySerialNumber", query = "UPDATE device_network_specification SET device_id = ?2 WHERE id = ?1", resultClass = DeviceNetworkSpecification.class)
 @Entity
 public class DeviceNetworkSpecification {
     //mac-address is stored as ID

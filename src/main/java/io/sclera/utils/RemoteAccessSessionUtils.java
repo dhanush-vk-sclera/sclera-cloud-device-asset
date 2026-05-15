@@ -1,6 +1,6 @@
 package io.sclera.utils;
 
-import io.sclera.service.touchscreen.VdmsService;
+//import io.sclera.service.touchscreen.VdmsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.slf4j.Logger;
@@ -15,8 +15,8 @@ public class RemoteAccessSessionUtils {
     @Autowired
     private Utils settingsUtils;
 
-    @Autowired
-    private VdmsService vdmsService;
+//    @Autowired
+//    private VdmsService vdmsService;
 
     public Boolean startHostRemoteAccess(Integer public_port, Integer private_port, String ip_address) {
         String cmd = "tcptunnel --local-port=" + public_port + " --remote-port=" + private_port + " --remote-host=" + ip_address + " --stay-alive --fork &";

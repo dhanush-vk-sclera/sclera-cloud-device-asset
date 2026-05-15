@@ -4,6 +4,28 @@ Running log of compile errors and resolutions during Phase 2.
 
 | Date | Missing symbol | Classification (B/C/D) | Action | Notes |
 |---|---|---|---|---|
+## Pass 2 - 2026-05-14 (this session)
+
+All 30+ "cannot find symbol" errors resolved. `mvn compile` exits cleanly.
+
+| File | Error | Fix |
+|---|---|---|
+| FloorService.java:331 | `JsonProcessingException` caught but never thrown | Changed to `catch (Exception e)` |
+| PropertyQrcodeService | 10 missing stub methods | Added stubs with StubLog.warn |
+| DockerService | `getDockerInterfaceList`, `getVdmsConfigInterfaceList` missing | Added stubs |
+| SocketService | `socketDockerInterfaceStatus` missing | Added stub |
+| VdmsRepository | `getVDMSId()` missing from interface | Added to interface |
+| SettingsService | `getSystemInterfaces()` missing; wrong InterfaceDTO type | Added stub with correct `touchscreen.settings.InterfaceDTO` |
+| QrCodeService | 5 missing stub methods | Added stubs |
+| ClientQrCodeService | 3 missing stub methods | Added stubs |
+| NfcService | `syncAllNfc`, `syncNfc` missing | Added stubs |
+| ClientNfcService | `syncAllClientNfc`, `syncClientNfc` missing | Added stubs |
+| APICallService | 17 missing stubs; `getJSONArrayFromJSONString` wrong generic `Class<String>` | Added stubs; changed to `<T> List<T>` |
+| MonitorService | `deviceUpsertbyId`, `insertDevicesHistory` missing | Added stubs |
+| InventoryDeviceSyncDTO | `getEmail()` missing | Added field + getter/setter |
+| InventoryDeviceService | `upsertInventoryDevices` missing | Added stub |
+| VdmsSyncDTO | `inventory_device_sync` was `Integer`, callers pass `InventoryDeviceSyncDTO` | Changed field type to `InventoryDeviceSyncDTO` |
+
 ## Pass 1 - initial compile
 
 Unique missing-symbol error lines: 100

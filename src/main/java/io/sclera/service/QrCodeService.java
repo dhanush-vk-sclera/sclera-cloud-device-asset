@@ -24,4 +24,19 @@ public class QrCodeService {
         StubLog.warn("QrCodeService", "getQrCodesByLocationIds", "AP-C1edge");
         return Collections.emptySet();
     }
+    public Set<QrCodeDTO> syncQrCodes(String vdmsId) {
+        StubLog.warn("QrCodeService", "syncQrCodes", "AP-C1edge"); return Collections.emptySet();
+    }
+    public Set<QrCodeDTO> getQrCodeDetailsByIds(Set<String> ids) {
+        StubLog.warn("QrCodeService", "getQrCodeDetailsByIds", "AP-C1edge"); return Collections.emptySet();
+    }
+    public void upsertQrCodesInBatch(Set<QrCodeDTO> dtos) {
+        StubLog.warn("QrCodeService", "upsertQrCodesInBatch", "AP-C1edge");
+    }
+    public Set<QrCodeDTO> getClientQrCodeDetailsByIds(Set<String> ids) {
+        StubLog.warn("QrCodeService", "getClientQrCodeDetailsByIds", "AP-C1edge"); return Collections.emptySet();
+    }
+    public void syncAlQrCodes(String vdmsId) {
+        StubLog.warn("QrCodeService", "syncAlQrCodes", "AP-C1edge");
+    }
 }

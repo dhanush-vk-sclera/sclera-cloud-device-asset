@@ -1,7 +1,7 @@
 package io.sclera.service;
 
-import io.sclera.dto.ConditionsDTO;
 import io.sclera.dto.DaintreeConfigurationDTO;
+import io.sclera.dto.ConditionsDTO;
 import io.sclera.dto.DaintreeDeviceDTO;
 import io.sclera.utils.StubLog;
 import org.springframework.stereotype.Service;

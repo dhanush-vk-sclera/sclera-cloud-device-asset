@@ -4,12 +4,15 @@ import io.sclera.dto.ConnectedDevicesDTO;
 import io.sclera.dto.PowerSourceConnectionsDTO;
 import io.sclera.utils.StubLog;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 /** STUB: Phase 2 will implement with real JPA queries */
 @Component
+@Repository
 public class ConnectedDevicesRepository {
 
     public void addConnectedDevices(String deviceId, String connectedDeviceId, String type) {

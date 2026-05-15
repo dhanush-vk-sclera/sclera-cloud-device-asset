@@ -1,15 +1,23 @@
 package io.sclera.models;
 
-/** STUB: non-AP-C1 entity (no @Entity to keep out of schema) */
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "record_checklist")
 public class RecordChecklist {
 
+    @Id
     private String id;
     private String record_type;
+
+    // TODO: replace with Dapr call when checklist module is ready
+    @javax.persistence.Transient
     private InspectionRecord inspection_record;
 
     public String getId() { return id; }
-    public void setId(String id) { this.i
-public<__TMP__> __TMP__ getRecord_type() {} = id; }
+    public void setId(String id) { this.id = id; }
 
     public String getRecord_type() { return record_type; }
     public void setRecord_type(String record_type) { this.record_type = record_type; }

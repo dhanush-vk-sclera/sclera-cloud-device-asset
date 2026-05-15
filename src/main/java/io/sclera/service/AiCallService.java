@@ -9,7 +9,7 @@ import io.sclera.Repository.CallFlowRuleRepository;
 import io.sclera.dto.*;
 import io.sclera.dto.touchscreen.settings.VdmsDTO;
 import io.sclera.integration.dto.ResponseDTO;
-import io.sclera.service.touchscreen.VdmsService;
+//import io.sclera.service.touchscreen.VdmsService;
 import io.sclera.sockets.SocketService;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,8 +52,8 @@ public class AiCallService {
     DockerService dockerService;
     @Autowired
     APICallService apiCallService;
-    @Autowired
-    VdmsService vdmsService;
+//    @Autowired
+//    VdmsService vdmsService;
     @Autowired
     TechnicianService technicianService;
     @Autowired
@@ -156,7 +156,7 @@ public class AiCallService {
         WebClient webClient = WebClient.create();
         List<TechnicianDTO> technicians = technicianService.getAvailableTechnicianCountryCodePhoneByDeviceId(deviceId);
         System.out.println("Technicians: " + technicians.size());
-        String vdmsId = vdmsService.getVDMSId();
+        String vdmsId = "VDMS400";
         String aiCallLogId = aiCallLogRepository.getAiCallLogIdByDeviceId(deviceId);
         List<JSONObject> requestBodies = new ArrayList<>();
         if (technicians == null || technicians.isEmpty()) {
@@ -759,7 +759,8 @@ public class AiCallService {
         List<CallFlowRuleDTO> callFlowRuleDTOS = getCallFlowByDeviceIdAndCriteria(deviceId, criteria);
         String date = "";
         String time = "";
-        VdmsDTO vdms = vdmsService.getVDMSDetails();
+        VdmsDTO vdms = new VdmsDTO();
+        vdms.setId("VDMS400");
         DeviceDTO deviceDTO = this.getDeviceInfoFromDb(deviceId);
         String formattedDateTime = formatLastSeen(deviceDTO.getLast_seen_on(), vdms.getTimezone());
         String[] parts = formattedDateTime.split(",\\s+");
@@ -854,7 +855,8 @@ public class AiCallService {
 
     public Mono<String> makeManagerCall(String deviceId, String phoneNo, String aiCallLogId) {
         try {
-            VdmsDTO vdmsDTO = vdmsService.getVDMSDetails();
+            VdmsDTO vdmsDTO = new VdmsDTO();
+            vdmsDTO.setId("VDMS400");
             DeviceDTO deviceDTO = this.getDeviceInfoFromDb(deviceId);
             String issueType = aiCallLogRepository.getAiCallLogIssueTypeByAiCallLogId(aiCallLogId);
             JSONObject requestBody = createDeviceRequestBody(deviceDTO, issueType);

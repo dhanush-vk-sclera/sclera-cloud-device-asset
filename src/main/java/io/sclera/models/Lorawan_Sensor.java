@@ -637,7 +637,8 @@ public class Lorawan_Sensor {
     private String sensor_info;
 
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "lorawan_sensor")
+    // TODO: replace with Dapr call when lorawan-sensor-attributes module is ready
+    @javax.persistence.Transient
     private Set<Lorawan_Sensor_Attributes> lorawan_sensor_attributes;
 
     @ManyToOne

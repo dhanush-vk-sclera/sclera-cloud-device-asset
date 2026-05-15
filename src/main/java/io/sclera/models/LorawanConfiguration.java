@@ -1,13 +1,11 @@
 package io.sclera.models;
 
 import io.sclera.dto.LorawanConfigurationDTO;
-import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Data
 //Shashikala
 @SqlResultSetMapping(
         name = "allLorawanConfigurationMapping",
@@ -59,4 +57,19 @@ public class LorawanConfiguration {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "lorawan_configuration")
     private Set<Lorawan_Sensor> lorawan_sensors;
+
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+    public String getApi_key() { return api_key; }
+    public void setApi_key(String api_key) { this.api_key = api_key; }
+    public String getApplication_id() { return application_id; }
+    public void setApplication_id(String application_id) { this.application_id = application_id; }
+    public String getTenant_id() { return tenant_id; }
+    public void setTenant_id(String tenant_id) { this.tenant_id = tenant_id; }
+    public Vdms getVdms_id() { return vdms_id; }
+    public void setVdms_id(Vdms vdms_id) { this.vdms_id = vdms_id; }
+    public Set<Lorawan_Sensor> getLorawan_sensors() { return lorawan_sensors; }
+    public void setLorawan_sensors(Set<Lorawan_Sensor> lorawan_sensors) { this.lorawan_sensors = lorawan_sensors; }
 }

@@ -25,4 +25,7 @@ public class GlobalInspectionRecordService {
     public void updateGlobalInspectionRelationLocationAndIsRemoved(Set<String> locationIds) {
         StubLog.warn("GlobalInspectionRecordService", "updateGlobalInspectionRelationLocationAndIsRemoved", "AP-C4");
     }
+    public void updateGlobalInspectionRecord(String email) {
+        StubLog.warn("GlobalInspectionRecordService", "updateGlobalInspectionRecord", "AP-C4");
+    }
 }

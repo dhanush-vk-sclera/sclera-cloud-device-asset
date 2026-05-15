@@ -12,7 +12,7 @@ import io.sclera.dto.LocationDTO;
 import io.sclera.dto.RecordChecklistDTO;
 import io.sclera.dto.touchscreen.settings.VdmsDTO;
 import io.sclera.integration.dto.ResponseDTO;
-import io.sclera.service.touchscreen.VdmsService;
+//import io.sclera.service.touchscreen.VdmsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fasterxml.uuid.Generators;
@@ -33,8 +33,8 @@ public class BuildingService {
     APICallService apiCallService;
     @Autowired
     LocationService locationService;
-    @Autowired
-    VdmsService vdmsService;
+//    @Autowired
+//    VdmsService vdmsService;
     @Autowired
     WebClientService webClientService;
     @Autowired
@@ -80,7 +80,7 @@ public class BuildingService {
             if (buildingDTO.getBuilding_id() != null && !buildingDTO.getBuilding_id().isEmpty()) buildingDTO.setId(buildingDTO.getBuilding_id());
             Boolean status = apiCallService.syncBuildingToADC(buildingDTO, vdmsDetails.getCustomer_org_id(), vdmsDetails.getAdc_configuration_id());
             log.info("Building synced to ADC with status: {}", status);
-        } catch (JsonProcessingException e) {
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
@@ -313,7 +313,7 @@ public class BuildingService {
     public Map<String, Object> syncLocationsFromBackend(HttpServletRequest httpServletRequest) {
         System.out.println("********************SYNC LOCATIONS FROM CLOUD************************************");
         //getting vdmsid of the sclera box
-        String vdmsIdScleraBox = vdmsService.getVDMSId();
+        String vdmsIdScleraBox = "VDMS400";
         // getting all buildings from location server..
         List<BuildingDTO> all_buildings = apiCallService.getAllLocations(vdmsIdScleraBox);
         log.info("\n***********************All Locations from CLOUD****************************\n{}", all_buildings);
@@ -441,7 +441,7 @@ public class BuildingService {
 
     //  syncFloorMapsTiles to be deleted after sync
     public List<FloorDTO> syncFloorMapsTiles() {
-        String vdmsIdScleraBox = vdmsService.getVDMSId();
+        String vdmsIdScleraBox = "VDMS400";
         Set<BuildingDTO> buildings = this.getBuildingsByVdmsId(vdmsIdScleraBox, null, null);
         List<FloorDTO> syncFailedFloors = new ArrayList<>();
         for (BuildingDTO building : buildings) {

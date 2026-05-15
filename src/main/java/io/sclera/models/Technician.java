@@ -62,7 +62,8 @@ public class Technician {
     @ManyToOne
     @JoinColumn(name = "vdms_id")
     private Vdms vdms;
-    @ManyToMany(mappedBy = "technician")
+    // TODO: replace with Dapr call when device-technician module is ready
+    @javax.persistence.Transient
     private Set<Device> device;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "technician")
     private Set<AiCallLog> aiCallLog;

@@ -10,7 +10,6 @@ import javax.transaction.Transactional;
 import com.alibaba.fastjson.JSONArray;
 import io.sclera.dto.LocationAlertDTO;
 import io.sclera.dto.LocationDTO;
-import io.sclera.integration.dto.LocationIntegrationDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -245,8 +244,7 @@ public interface LocationRepository extends JpaRepository<Location, String> {
     Set<LocationDTO> getLocationsByBuildingAndFloor(String building_id, String floor_id, String searchKey, String qrCodeCondition, JSONArray locationIdsTaggedToQrCode, String nfcConditon, JSONArray locationIdsTaggedToNfc, String recordChecklistCondition, String status, JSONArray types);
 
     /******************************************* Integration *********************************************************/
-    @Query(nativeQuery = true)
-    List<LocationIntegrationDTO> getIntegrationByLocationId(String locationId);
+    // getIntegrationByLocationId stubbed in LocationService (Bucket-D integration removed)
 
     @Query(nativeQuery = true)
     Set<LocationDTO> getAllRecordChecklistLocationsPagination(String searchkey, Integer pagesize, Integer offset, JSONArray global_checklist_ids, String floor_id,

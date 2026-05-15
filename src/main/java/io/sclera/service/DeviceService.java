@@ -23,6 +23,7 @@ import io.sclera.integration.dto.ResponseDTO;
 import io.sclera.models.*;
 import io.sclera.queryrepository.DeviceQueryRepository;
 import io.sclera.rabbitmq.RabbitmqService;
+//import io.sclera.service.touchscreen.VdmsService;
 import io.sclera.service.touchscreen.VdmsService;
 import io.sclera.service.touchscreen.assetmapper.AssetMapperService;
 import io.sclera.sockets.SocketService;
@@ -121,6 +122,8 @@ public class DeviceService {
 
     @Autowired
     SnmpService snmpService;
+    @Autowired
+    VdmsService vdmsService;
 
     @Autowired
     InterfaceService interfaceService;
@@ -266,8 +269,8 @@ public class DeviceService {
     @Autowired
     DeviceOnboardStatusRepository deviceOnboardStatusRepository;
 
-    @Autowired
-    VdmsService vdmsService;
+//    @Autowired
+//    VdmsService vdmsService;
 
     @Autowired
     DeviceSearchService deviceSearchService;

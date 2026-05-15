@@ -24,4 +24,7 @@ public class SocketService {
     public void socketMeasuringInstrumentSensorValueUpdate(String deviceId) {
         StubLog.warn("SocketService", "socketMeasuringInstrumentSensorValueUpdate", "edge-local");
     }
+    public void socketDockerInterfaceStatus(String interfaceName, String interfaceStatus, Integer networkOrigin) {
+        StubLog.warn("SocketService", "socketDockerInterfaceStatus", "edge-local");
+    }
 }

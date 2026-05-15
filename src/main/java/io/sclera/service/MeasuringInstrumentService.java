@@ -436,31 +436,31 @@ public class MeasuringInstrumentService {
 
 
     //used for backend syncing
-    public void syncInstrument(String username, String vdmsid, String device_id, Integer updateAttributes) {
-        Set<MeasuringInstrumentDTO> measuringInstrument = measuingInstrumentRepository.getInstrumentByDeviceId(device_id);
-        if (measuringInstrument != null && measuringInstrument.size() > 0) {
-            List<MeasuringInstrumentDTO> fetchInstrument = apiCallService.fetchMeasuringInstruments();
-            if (fetchInstrument != null && fetchInstrument.size() > 0) {
-                for (MeasuringInstrumentDTO inputInstrument : measuringInstrument) {
-                    for (MeasuringInstrumentDTO fetchedInstruments : fetchInstrument) {
-                        if (inputInstrument.getType().equals(fetchedInstruments.getType())) {
-                            if (updateAttributes == 1) {
-                                Integer updateStatus = measuingInstrumentRepository.syncMeasuringInstrument(fetchedInstruments.getName(), fetchedInstruments.getDescription(), fetchedInstruments.getCalculation_type(), fetchedInstruments.getAttribute(), fetchedInstruments.getParameter(), fetchedInstruments.getCategory(), fetchedInstruments.getValue(), fetchedInstruments.getUnit(), fetchedInstruments.getTags(), fetchedInstruments.getTimestamp(), fetchedInstruments.getType(), inputInstrument.getId());
-                                if (updateStatus == 1) {
-                                    updateMeasuringInstrumentValueByFormula(inputInstrument.getId(), 0);
-                                }
-                                break;
-                            } else {
-                                measuingInstrumentRepository.syncMeasuringInstrumentExceptAttributes(fetchedInstruments.getCalculation_type(), fetchedInstruments.getParameter(), fetchedInstruments.getCategory(), fetchedInstruments.getUnit(), fetchedInstruments.getTags(), fetchedInstruments.getType(), inputInstrument.getId());
-                                break;
-
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    public void syncInstrument(String username, String vdmsid, String device_id, Integer updateAttributes) {
+//        Set<MeasuringInstrumentDTO> measuringInstrument = measuingInstrumentRepository.getInstrumentByDeviceId(device_id);
+//        if (measuringInstrument != null && measuringInstrument.size() > 0) {
+//            List<MeasuringInstrumentDTO> fetchInstrument = apiCallService.fetchMeasuringInstruments();
+//            if (fetchInstrument != null && fetchInstrument.size() > 0) {
+//                for (MeasuringInstrumentDTO inputInstrument : measuringInstrument) {
+//                    for (MeasuringInstrumentDTO fetchedInstruments : fetchInstrument) {
+//                        if (inputInstrument.getType().equals(fetchedInstruments.getType())) {
+//                            if (updateAttributes == 1) {
+//                                Integer updateStatus = measuingInstrumentRepository.syncMeasuringInstrument(fetchedInstruments.getName(), fetchedInstruments.getDescription(), fetchedInstruments.getCalculation_type(), fetchedInstruments.getAttribute(), fetchedInstruments.getParameter(), fetchedInstruments.getCategory(), fetchedInstruments.getValue(), fetchedInstruments.getUnit(), fetchedInstruments.getTags(), fetchedInstruments.getTimestamp(), fetchedInstruments.getType(), inputInstrument.getId());
+//                                if (updateStatus == 1) {
+//                                    updateMeasuringInstrumentValueByFormula(inputInstrument.getId(), 0);
+//                                }
+//                                break;
+//                            } else {
+//                                measuingInstrumentRepository.syncMeasuringInstrumentExceptAttributes(fetchedInstruments.getCalculation_type(), fetchedInstruments.getParameter(), fetchedInstruments.getCategory(), fetchedInstruments.getUnit(), fetchedInstruments.getTags(), fetchedInstruments.getType(), inputInstrument.getId());
+//                                break;
+//
+//                            }
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     public Set<String> getUniqueSensorCategoryByFloor(String floorid) {
         return measuingInstrumentRepository.getUniqueSensorCategoryByFloor(floorid);
@@ -654,39 +654,39 @@ public class MeasuringInstrumentService {
     }
 
 
-    public List<DaintreePointsDTO> fetchDaintreePoints(List<DaintreePointsDTO> daintreeDevicePoints) {
-        try {
-            if (daintreeDevicePoints.size() > 0) {
-                return daintreeDevicePoints;
-            } else {
-                List<DaintreePointsDTO> daintreePointsList = new ArrayList<>();
-                List<DaintreeConfigurationDTO> daintreeConfigurations = daintreeService.getDaintreeConfigurations("null");
-                for (DaintreeConfigurationDTO daintreeConfiguration : daintreeConfigurations) {
-                    try {
-                        List<DaintreeDeviceDTO> daintreeDeviceList = daintreeService.getDaintreeDevices(daintreeConfiguration.getId(), null);
-                        if (daintreeDeviceList != null) {
-                            for (DaintreeDeviceDTO daintreeDevice : daintreeDeviceList) {
-                                try {
-                                    List<DaintreePointsDTO> daintreePoints = daintreeService.getDaintreePointsByDaintreeDeviceId(daintreeDevice.getId());
-                                    daintreePointsList.addAll(daintreePoints);
-
-                                } catch (Exception e) {
-                                    System.out.println(e);
-                                }
-                            }
-                        }
-                    } catch (Exception e) {
-                        System.out.println("DAINTREE SYNC FETCH DAINTREE POINTS ERROR");
-                        System.out.println(e);
-                    }
-                }
-                return daintreePointsList;
-            }
-        } catch (Exception e) {
-            System.out.println("DAINTREE SYNC FETCH DAINTREE POINTS ERROR" + e);
-            return null;
-        }
-    }
+//    public List<DaintreePointsDTO> fetchDaintreePoints(List<DaintreePointsDTO> daintreeDevicePoints) {
+//        try {
+//            if (daintreeDevicePoints.size() > 0) {
+//                return daintreeDevicePoints;
+//            } else {
+//                List<DaintreePointsDTO> daintreePointsList = new ArrayList<>();
+//                List<DaintreeConfigurationDTO> daintreeConfigurations = daintreeService.getDaintreeConfigurations("null");
+//                for (DaintreeConfigurationDTO daintreeConfiguration : daintreeConfigurations) {
+//                    try {
+//                        List<DaintreeDeviceDTO> daintreeDeviceList = daintreeService.getDaintreeDevices(daintreeConfiguration.getId(), null);
+//                        if (daintreeDeviceList != null) {
+//                            for (DaintreeDeviceDTO daintreeDevice : daintreeDeviceList) {
+//                                try {
+//                                    List<DaintreePointsDTO> daintreePoints = daintreeService.getDaintreePointsByDaintreeDeviceId(daintreeDevice.getId());
+//                                    daintreePointsList.addAll(daintreePoints);
+//
+//                                } catch (Exception e) {
+//                                    System.out.println(e);
+//                                }
+//                            }
+//                        }
+//                    } catch (Exception e) {
+//                        System.out.println("DAINTREE SYNC FETCH DAINTREE POINTS ERROR");
+//                        System.out.println(e);
+//                    }
+//                }
+//                return daintreePointsList;
+//            }
+//        } catch (Exception e) {
+//            System.out.println("DAINTREE SYNC FETCH DAINTREE POINTS ERROR" + e);
+//            return null;
+//        }
+//    }
 
     public Set<SensorDTO> getIntegrationSensorByLocationId(String locationid) {
         return measuingInstrumentRepository.getIntegrationSensorByLocationId(locationid);
@@ -806,7 +806,7 @@ public class MeasuringInstrumentService {
                                 log.info("Object " + i + ": " + attribute);
                                 if (attribute.getString("protocol") != null && attribute.getString("primary_id") != null && attribute.getString("secondary_id") != null) {
                                     if (attribute.getString("protocol").equals(protocol) && attribute.getString("primary_id").equals(primary_id) && attribute.getString("secondary_id").equals(secondary_id)) {
-                                        measuringInstrumentAttributesRepository.updateAttributeValueById(value, measuringInstrument.get("id").toString());
+//                                        measuringInstrumentAttributesRepository.updateAttributeValueById(value, measuringInstrument.get("id").toString());
 
                                     }
                                 }
@@ -851,22 +851,22 @@ public class MeasuringInstrumentService {
         return measuringInstrumentAttributesRepository.getMeasuringInstrumentAttributesByMeasuringInstrumentId(measuringInstrumentId);
     }
 
-    public void deleteMeasuringInstrumentAttributeById(String id) {
-        measuringInstrumentAttributesRepository.deleteMeasuringInstrumentAttributeById(id);
-    }
-
-    public void deleteMeasuringInstrumentAttributeByMeasuringInstrumentId(String measuringInstrumentId) {
-        measuringInstrumentAttributesRepository.deleteMeasuringInstrumentAttributeByMeasuringInstrumentId(measuringInstrumentId);
-    }
-
-    public void updateMeasuringIntrumentParametersByIds(String protocol, String primary_id, String secondary_id, String value) {
-        log.info("protocol : " + protocol + "    || primary_id : " + primary_id + "  || secondary_id : " + secondary_id + "  || value : " + value);
-        measuringInstrumentAttributesRepository.updateAttributeValue(protocol, primary_id, secondary_id, value);
-        Set<String> measuringInstrumentIds = measuringInstrumentAttributesRepository.getMeasuringInstrumentIdByIds(protocol, primary_id, secondary_id);
-        for (String measuringInstrumentId : measuringInstrumentIds) {
-            updateMeasuringInstrumentValueByFormula(measuringInstrumentId, 1);
-        }
-    }
+//    public void deleteMeasuringInstrumentAttributeById(String id) {
+//        measuringInstrumentAttributesRepository.deleteMeasuringInstrumentAttributeById(id);
+//    }
+//
+//    public void deleteMeasuringInstrumentAttributeByMeasuringInstrumentId(String measuringInstrumentId) {
+//        measuringInstrumentAttributesRepository.deleteMeasuringInstrumentAttributeByMeasuringInstrumentId(measuringInstrumentId);
+//    }
+//
+//    public void updateMeasuringIntrumentParametersByIds(String protocol, String primary_id, String secondary_id, String value) {
+//        log.info("protocol : " + protocol + "    || primary_id : " + primary_id + "  || secondary_id : " + secondary_id + "  || value : " + value);
+//        measuringInstrumentAttributesRepository.updateAttributeValue(protocol, primary_id, secondary_id, value);
+//        Set<String> measuringInstrumentIds = measuringInstrumentAttributesRepository.getMeasuringInstrumentIdByIds(protocol, primary_id, secondary_id);
+//        for (String measuringInstrumentId : measuringInstrumentIds) {
+//            updateMeasuringInstrumentValueByFormula(measuringInstrumentId, 1);
+//        }
+//    }
 
     public void updateMeasuringInstrumentValueByFormula(String id, Integer value_changed_status) {
         try {

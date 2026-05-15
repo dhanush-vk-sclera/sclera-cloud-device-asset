@@ -7,6 +7,8 @@ server:
     key-store-password: HkPvhcryJP79kTiWxkQ6
 
 spring:
+  flyway:
+    enabled: false
   main:
     allow-circular-references: true
   datasource:
@@ -33,10 +35,9 @@ spring:
       max-request-size: 200MB
       max-file-size: 200MB
   rabbitmq:
-    host: sclerarabbitmq
+    host: localhost
     port: 5672
-    username: sclerauser
-    password: Ra66i+Mq@Sclera
+
 
 sclera:
   chirpstackutils:

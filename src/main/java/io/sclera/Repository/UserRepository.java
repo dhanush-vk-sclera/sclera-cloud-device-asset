@@ -54,4 +54,6 @@ public interface UserRepository {
     String getAllUserRoles(String email);
 
     int checkUserByEmail(String email);
+
+    String getMasterUserEmail();
 }

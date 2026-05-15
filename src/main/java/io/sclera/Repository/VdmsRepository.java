@@ -8,4 +8,12 @@ import org.springframework.stereotype.Repository;
 public interface VdmsRepository {
     String getCustomerOrgIdByVdmsId(String vdms_id);
     VdmsDTO getSyncDetailsForADC();
+    String getVDMSId();
+    VdmsDTO getVdmsDetails();
+
+    void updateCustomerOrgIdByVdmsId(String vdmsId, String customerOrgId);
+
+    String getVDMSPassword();
+
+    Integer getIsMaster();
 }

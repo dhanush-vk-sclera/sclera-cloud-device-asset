@@ -2,7 +2,6 @@
 package io.sclera.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.*;
 import java.math.BigDecimal;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)

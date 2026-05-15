@@ -30,7 +30,6 @@ import java.util.stream.Collectors;
 
 @Component
 public class DockerUtils {
-
     private static final Logger log = LoggerFactory.getLogger(DockerUtils.class);
 
     @Autowired

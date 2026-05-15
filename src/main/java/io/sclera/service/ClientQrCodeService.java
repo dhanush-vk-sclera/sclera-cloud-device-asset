@@ -16,4 +16,13 @@ public class ClientQrCodeService {
         StubLog.warn("ClientQrCodeService", "getLocationIdsTaggedToClientQrCode", "AP-C1edge");
         return new JSONArray();
     }
+    public java.util.Set<io.sclera.dto.ClientQrCodeDTO> syncClientQrCodes(String vdmsId) {
+        StubLog.warn("ClientQrCodeService", "syncClientQrCodes", "AP-C1edge"); return java.util.Collections.emptySet();
+    }
+    public void upsertClientQrCodesInBatch(java.util.Set<io.sclera.dto.ClientQrCodeDTO> dtos) {
+        StubLog.warn("ClientQrCodeService", "upsertClientQrCodesInBatch", "AP-C1edge");
+    }
+    public void syncAllClientQrCodes(String vdmsId) {
+        StubLog.warn("ClientQrCodeService", "syncAllClientQrCodes", "AP-C1edge");
+    }
 }

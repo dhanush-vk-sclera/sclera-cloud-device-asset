@@ -5,3 +5,4 @@
 *.log
 .DS_Store
 HELP.md
+.claude/settings.local.json

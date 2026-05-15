@@ -79,7 +79,6 @@ import com.nimbusds.jwt.proc.JWTProcessor;
 import io.sclera.auth.TenantJWSKeySelector;
 import io.sclera.auth.TenantJwtIssuerValidator;
 import io.sclera.utils.Utils;
-import lombok.RequiredArgsConstructor;
 import org.apache.commons.net.util.SubnetUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -110,7 +109,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@RequiredArgsConstructor
+@org.springframework.context.annotation.Profile("!docker")
 public class WebSecurityConfig {
 
 
